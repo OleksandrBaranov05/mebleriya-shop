@@ -1,1 +1,44 @@
-<div class="a4">4</div>
+<section class="about-us">
+  <div class="container about-container">
+    <div class="about-descr-wrap">
+      <h2 class="about-title">Про Меблерію</h2>
+      <p class="about-text">
+        У Меблерії ми прагнемо створювати затишок та функціональність у кожному
+        домі. Наша місія - пропонувати високоякісні меблі, що поєднують у собі
+        сучасний дизайн, довговічність та доступність. Ми віримо, що ідеальний
+        інтер'єр починається з правильних меблів.
+      </p>
+    </div>
+    <div class="about-img-div">
+      <picture>
+        <source
+          srcset="
+            /about-us/about-us-desk-min.png    1x,
+            /about-us/about-us-desk@2x-min.png 2x
+          "
+          media="(min-width:1440px)"
+        />
+        <source
+          srcset="
+            /about-us/about-us-tab-min.png    1x,
+            /about-us/about-us-tab@2x-min.png 2x
+          "
+          media="(min-width:768px)"
+        />
+        <source
+          srcset="
+            /about-us/about-us-mob-min.png     1x,
+            /about-us/about-us-dmob@2x-min.png 2x
+          "
+          media="(max-width:767px)"
+        />
+        <img
+          class="about-img"
+          src="/about-us/about-us-desk-min.png"
+          alt="Team meeting"
+          width="647"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
