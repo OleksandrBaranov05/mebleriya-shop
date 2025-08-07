@@ -47,6 +47,7 @@
     padding-bottom: 64px;
     display: flex;
     gap: 24px;
+    align-items: center;
   }
 
   .about-text {
