@@ -1,6 +1,6 @@
 import './js/header.js'
 import './js/hero.js'
-import './js/furniture-list-сollections.js'
+import './js/furniture-list-collections.js'
 import './js/furniture-list-item.js'
 import './js/about-us.js'
 import './js/faq.js'
