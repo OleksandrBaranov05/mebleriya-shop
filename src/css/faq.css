@@ -1,9 +1,8 @@
 @media only screen and (min-width: 1440px) {
-  .container {
-    max-width: 865px;
+  .faq__section {
+    max-width: 865px;  
   }
 }
-
 .faq__container {
   background: var(--color-white);
   border-radius: 8px;
