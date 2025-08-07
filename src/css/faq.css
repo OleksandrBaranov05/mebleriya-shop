@@ -1,0 +1,94 @@
+.faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.faq__title {
+  margin-bottom: 32px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #080c09;
+}
+
+.ac {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  transition: border-color 0.3s ease;
+}
+
+.ac:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ac.is-active {
+  border-top: 1px solid #6B0609;
+  border-bottom: 1px solid #6B0609;
+}
+
+.ac-header {
+  margin: 0;
+}
+
+.ac .ac-trigger {
+  position: relative;
+  padding: 20px 30px 20px 0;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #080c09;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.ac .ac-header > .ac-trigger::after {
+  content: "" !important;
+}
+
+.ac-trigger::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+.ac.is-active .ac-trigger::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.ac .ac-trigger:focus,
+.ac.is-active .ac-trigger {
+  color: #080C09;
+}
+
+.ac-panel {
+  font-weight: 400;
+  font-size: 16px;
+  color: #080c09;
+}
+
+.ac .ac-panel .ac-text {
+  padding: 0 0 24px 0;
+}
