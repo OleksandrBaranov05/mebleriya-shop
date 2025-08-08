@@ -1,0 +1,94 @@
+.faq-container {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.faq-title {
+  margin-bottom: 32px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.ac {
+  border: none;
+  border-bottom: 1px solid var(--color-scheme-1-border);
+  transition: border-color 0.3s ease;
+}
+
+.ac:first-child {
+  border-top: 1px solid var(--color-scheme-1-border);
+}
+
+.ac:first-child.is-active {
+  border-top: 1px solid var(--color-madang);
+}
+
+.ac.is-active {
+  border-bottom: 1px solid var(--color-madang);
+}
+
+.ac:has(+ .is-active) {
+  border-bottom: 1px solid var(--color-madang);
+}
+
+.ac .ac-trigger {
+  position: relative;
+  padding: 23px 56px 23px 0;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-scheme-1-text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.ac .ac-trigger:hover,
+.ac .ac-trigger:focus {
+  color: var(--color-scheme-1-text);
+}
+
+.ac .ac-header > .ac-trigger::after {
+  content: '' !important;
+}
+
+.ac-trigger::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s ease, background-image 0.3s ease;
+}
+
+.ac.is-active .ac-trigger::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.ac .ac-panel .ac-text {
+  padding: 0 0 24px 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-scheme-1-text);
+}
+
+@media only screen and (min-width: 768px) {
+  .ac .ac-trigger {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq-container {
+    max-width: 865px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
