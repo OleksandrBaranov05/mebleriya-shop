@@ -45,7 +45,7 @@
 
 .ac .ac-trigger:hover,
 .ac .ac-trigger:focus {
-  color: var(--color-madang);
+  color: var(--color-scheme-1-text);
 }
 
 .ac .ac-header > .ac-trigger::after {
@@ -87,6 +87,7 @@
 
 @media only screen and (min-width: 1440px) {
   .faq-container {
+    max-width: 865px;
     padding-top: 80px;
     padding-bottom: 80px;
   }
