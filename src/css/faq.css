@@ -1,31 +1,17 @@
-@media only screen and (min-width: 1440px) {
-  .faq__section {
-    max-width: 865px;  
-  }
-}
-.faq__container {
-  background: var(--color-white);
-  border-radius: 8px;
-  padding: 40px 0;
+.faq-container {
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
-.faq__title {
+.faq-title {
   margin-bottom: 32px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
+  font-size: 36px;
   text-align: center;
-  color: var(--color-scheme-1-text);
 }
 
 .ac {
   border: none;
   border-bottom: 1px solid var(--color-scheme-1-border);
-  background-color: var(--color-white);
-  margin: 0;
-  padding: 0;
   transition: border-color 0.3s ease;
 }
 
@@ -33,37 +19,41 @@
   border-top: 1px solid var(--color-scheme-1-border);
 }
 
-.ac.is-active {
+.ac:first-child.is-active {
   border-top: 1px solid var(--color-madang);
+}
+
+.ac.is-active {
   border-bottom: 1px solid var(--color-madang);
 }
 
-.ac-header {
-  margin: 0;
+.ac:has(+ .is-active) {
+  border-bottom: 1px solid var(--color-madang);
 }
 
 .ac .ac-trigger {
   position: relative;
-  padding: 20px 30px 20px 0;
-  background: none;
-  border: none;
+  padding: 23px 56px 23px 0;
   width: 100%;
-  text-align: left;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
   color: var(--color-scheme-1-text);
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
+.ac .ac-trigger:hover,
+.ac .ac-trigger:focus {
+  color: var(--color-madang);
+}
+
 .ac .ac-header > .ac-trigger::after {
-  content: "" !important;
+  content: '' !important;
 }
 
 .ac-trigger::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   right: 0;
@@ -81,17 +71,23 @@
   transform: translateY(-50%) rotate(180deg);
 }
 
-.ac .ac-trigger:focus,
-.ac.is-active .ac-trigger {
-  color: var(--color-scheme-1-text);
-}
-
-.ac-panel {
+.ac .ac-panel .ac-text {
+  padding: 0 0 24px 0;
+  font-family: 'Raleway', sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: var(--color-scheme-1-text);
 }
 
-.ac .ac-panel .ac-text {
-  padding: 0 0 24px 0;
+@media only screen and (min-width: 768px) {
+  .ac .ac-trigger {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq-container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }

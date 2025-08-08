@@ -10,7 +10,7 @@
   --color-neutral: #838584;
   --color-neutral-dark: #525452;
   --color-neutral-darker: #202421;
-  --opacity-transparent: rgba(255, 255, 255, 0);
+  --opacity-transparent: rgba(2, 2, 2, 0);
   --color-scheme-1-foreground: var(--color-neutral-lightest);
   --color-scheme-1-accent: var(--color-neutral-darkest);
   --opacity-white-5: rgba(255, 255, 255, 0.05);
