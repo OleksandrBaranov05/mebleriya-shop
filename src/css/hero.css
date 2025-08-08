@@ -1,3 +1,115 @@
-.a2{
-    background-color: rgb(198, 208, 197);
+.hero {
+  background-image: url('/assets/hero/bg-mob-min.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-resolution: 2x) and (max-width: 768px) {
+  .hero {
+    background-image: url('/assets/hero/bg-mob@2x-min.png');
+  }
+}
+
+.hero-container {
+  padding-top: 157px;
+  padding-bottom: 157px;
+}
+
+.hero-title {
+  color: var(--color-white);
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.hero-text {
+  color: var(--color-white);
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.hero-btn {
+  display: block;
+  color: var(--color-scheme-1-background);
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 100px;
+  padding: 10px 87px;
+  box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(8, 12, 9, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background-color: var(--color-madang);
+  border: none;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-madang);
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero {
+    background-image: url('/assets/hero/bg-tab-min.png');
+  }
+
+  @media (min-resolution: 2x) and (min-width: 768px) {
+    .hero {
+      background-image: url('/assets/hero/bg-tab@2x-min.png');
+    }
+  }
+
+  .hero-container {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .hero-title {
+    margin-bottom: 24px;
+    max-width: 560px;
+    font-size: 56px;
+  }
+
+  .hero-text {
+    max-width: 560px;
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    padding: 10px 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .hero {
+    background-image: url('/assets/hero/bg-desk-min.png');
+  }
+
+  @media (min-resolution: 2x) and (min-width: 1440px) {
+    .hero {
+      background-image: url('/assets/hero/bg-desk@2x-min.png');
+    }
+  }
+
+  .hero-container {
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    padding: 10px 24px;
+  }
 }
