@@ -38,3 +38,9 @@
     background: var(--color-madang);
     opacity: 0.5;
 }
+
+@media only screen and (min-width: 1440px) {
+    .more-btn {
+        width: 421px;
+    }
+}

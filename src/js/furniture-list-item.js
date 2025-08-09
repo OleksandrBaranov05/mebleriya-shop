@@ -41,7 +41,7 @@ function createList(images) {
     gallery.insertAdjacentHTML("beforeend", markup);
 }
 
-categories.addEventListener("click", async (ev) => {
+document.querySelector(".furniture-list").addEventListener("click", async (ev) => {
     page = 1;
     clearList()
     try {
@@ -54,4 +54,19 @@ categories.addEventListener("click", async (ev) => {
         return;
     }
 
+})
+
+moreBtn.addEventListener("click", async (ev) => {
+  ev.preventDefault()
+  clearList()
+  page += 1;
+  try {
+    const images = await getImages(ev.target.value, page);
+    if (images.items.length === page * images.items.length) {
+      moreBtn.classList.add("visually-hidden");
+    }
+    return createList(images.items);
+  } catch {
+    return;
+  }
 })
