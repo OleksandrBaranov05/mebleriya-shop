@@ -6,6 +6,7 @@ let activeCat = 'all';
 let page = 1;
 let limit = 8;
 let total = 0;
+let loadingMore = false;
 async function getJSON(url) {
   const r = await fetch(url);
   if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
