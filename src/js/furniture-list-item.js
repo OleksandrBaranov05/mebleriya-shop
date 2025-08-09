@@ -1,75 +1,95 @@
-import axios from "axios";
-
-const moreBtn = document.querySelector(".more-btn")
+const BASE = 'https://furniture-store.b.goit.study/api';
+const catsList = document.getElementById('categoryList');
+const grid = document.getElementById('productsList');
+const more = document.getElementById('loadMoreBtn');
+let activeCat = 'all';
 let page = 1;
-let category;
-
-function clearList() { 
-    document.querySelector(".card-ul").innerHTML = ''
+let limit = 8;
+let total = 0;
+async function getJSON(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
 }
-
-async function getImages(category, page = 1) {
-  try {
-    const response = await axios.get("https://furniture-store.b.goit.study/api-docs/furniture", {
-      params: {
-        limit: 8,
-        page: page,
-        category: category,
-      },
+const api = {
+  categories: () => getJSON(`${BASE}/categories`),
+  furnitures: (p = {}) => {
+    const q = new URLSearchParams({
+      page: p.page ?? 1,
+      limit: p.limit ?? limit,
     });
-    
-    return {
-        items: response.furnitures,
-        totalItems: response.totalItems,
-    };
-  } catch (error) {
-    throw error;
-  }
+    if (p.category && p.category !== 'all') q.set('category', p.category);
+    return getJSON(`${BASE}/furnitures?${q.toString()}`);
+  },
 };
-
-function createList(products) {
-    const gallery = document.querySelector(".card-ul");
-    const markup = products.map((pr) => {
-        const { images, name, color, price, } = pr;
-        return `<li class="card-li">
-        <img src="${images[0]}" alt="${name}" class="card-img">
-        <p class="name">${name}</p>
-        <div class="colors">${color}</div>
-        <p class="price">${price} грн</p>
-        <button class="more-li-btn">Детальніше</button>
-        </li>`
-    }).join("");
-    gallery.insertAdjacentHTML("beforeend", markup);
+async function initCategories() {
+  const cats = await api.categories();
+  const map = new Map(cats.map(c => [c.name.trim(), c._id]));
+  catsList.querySelectorAll('.furniture-item').forEach(li => {
+    const name = li.querySelector('.furniture-text')?.textContent.trim();
+    li.dataset.cat = name === 'Всі товари' ? 'all' : map.get(name) || '';
+  });
 }
-
-document.querySelector(".furniture-list").addEventListener("click", async (ev) => {
-  category = ev.target.textContent;
-    page = 1;
-    clearList()
-    try {
-        const images = await getImages(category)
-        if (images.items.length < images.totalItems) {
-            moreBtn.classList.remove("visually-hidden");
-        }
-        return createList(images.items);
-    } catch(error) {
-        return error;
-    }
-
-})
-
-moreBtn.addEventListener("click", async (ev) => {
-  ev.preventDefault()
-  clearList()
+function clearProducts() {
+  grid.innerHTML = '';
+}
+function appendProducts(arr) {
+  const html = arr
+    .map(p => {
+      const title = p.title || p.name || 'Без назви';
+      const img = p.image || p.img || p.images?.[0] || '';
+      const price = p.price != null ? `${p.price} грн` : '';
+      return `<li class="product-card">
+      ${img ? `<img src="${img}" alt="${title}">` : ''}
+      <h3 class="gallery-title">${title}</h3>${
+        price ? `<p class="gallery-text">${price}</p>` : ''
+      }
+      <button class="details-btn">Детальніше</button>
+    </li>`;
+    })
+    .join('');
+  grid.insertAdjacentHTML('beforeend', html);
+}
+function updateMore(receivedCount) {
+  const shown = grid.querySelector('.product-card').length;
+  const finished = receivedCount < limit || shown >= total;
+  more.hidden = finished;
+  more.disabled = finished;
+}
+async function loadFirstPage() {
+  page = 1;
+  const data = await api.furnitures({ page, limit, category: activeCat });
+  total = data.totalItems ?? data.total ?? data.furnitures.length;
+  clearProducts();
+  appendProducts(data.furnitures);
+  updateMore(data.furnitures.length);
+}
+async function loadMore() {
+  if (loadingMore) return;
+  loadingMore = true;
+  more.disabled = true;
   page += 1;
-  try {
-    const images = await getImages(category, page);
-    const totalShown = page * images.items.length;
-    if (totalShown >= images.totalItems) {
-      moreBtn.classList.add("visually-hidden");
-    }
-    return createList(images.items);
-  } catch(error) {
-    return error;
-  }
-})
+  const data = await api.furnitures({ page, limit, category: activeCat });
+  appendProducts(data.furnitures);
+  updateMore(data.furnitures.length);
+  loadingMore = false;
+  if (!more.hidden) more.disabled = false;
+}
+catsList.addEventListener('click', async e => {
+  const li = e.target.closest('.furniture-item');
+  if (!li) return;
+  const cat = li.dataset.cat || 'all';
+  if (cat === activeCat) return;
+  activeCat = cat;
+  page = 1;
+  catsList
+    .querySelectorAll('.furniture-item')
+    .forEach(x => x.classList.remove('active'));
+  li.classList.add('active');
+  await loadFirstPage();
+});
+more.addEventListener('click', loadMore);
+(async function init() {
+  await initCategories();
+  await loadFirstPage();
+})();
