@@ -67,92 +67,92 @@
 
 .furniture-item-all {
   background-image: image-set(
-    url(/assets/furniture/all-furniture-min.png) 1x,
-    url(images/Mebli/1-2x-min.jpg) 2x
+    url("/assets/furniture/1-1x-min.jpg") 1x,
+    url("/assets/furniture/1-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-sofa {
   background-image: image-set(
-    url(/src/public/assets/furniture/bathroom-furniture-min.png) 1x,
-    url(../images/Mebli/2-2x-min.jpg) 2x
+    url("/assets/furniture/2-1x-min.jpg") 1x,
+    url("/assets/furniture/2-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-storage {
   background-image: image-set(
-    url(../images/Mebli/3-1x-min.jpg) 1x,
-    url(../images/Mebli/3-2x-min.jpg) 2x
+    url("/assets/furniture/3-1x-min.jpg") 1x,
+    url("/assets/furniture/3-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-bed {
   background-image: image-set(
-    url(../images/Mebli/4-1x-min.jpg) 1x,
-    url(../images/Mebli/4-2x-min.jpg) 2x
+    url("/assets/furniture/4-1x-min.jpg") 1x,
+    url("/assets/furniture/4-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-table {
   background-image: image-set(
-    url(../images/Mebli/5-1x-min.jpg) 1x,
-    url(../images/Mebli/5-2x-min.jpg) 2x
+    url("/assets/furniture/5-1x-min.jpg") 1x,
+    url("/assets/furniture/5-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-chair {
   background-image: image-set(
-    url(../../images/Mebli/6-1x-min.jpg) 1x,
-    url(../../images/Mebli/6-2x-min.jpg) 2x
+    url("/assets/furniture/6-1x-min.jpg") 1x,
+    url("/assets/furniture/6-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-kitchen {
   background-image: image-set(
-    url(../images/Mebli/7-1x-min.jpg) 1x,
-    url(../images/Mebli/7-2x-min.jpg) 2x
+    url("/assets/furniture/7-1x-min.jpg") 1x,
+    url("/assets/furniture/7-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-kids {
   background-image: image-set(
-    url(../images/Mebli/8-1x-min.jpg) 1x,
-    url(../images/Mebli/8-2x-min.jpg) 2x
+    url("/assets/furniture/8-1x-min.jpg") 1x,
+    url("/assets/furniture/8-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-office {
   background-image: image-set(
-    url(../images/Mebli/9-1x-min.jpg) 1x,
-    url(../images/Mebli/9-2x-min.jpg) 2x
+    url("/assets/furniture/9-1x-min.jpg") 1x,
+    url("/assets/furniture/9-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-hallway {
   background-image: image-set(
-    url(../images/Mebli/10-1x-min.jpg) 1x,
-    url(../images/Mebli/10-2x-min.jpg) 2x
+    url("/assets/furniture/10-1x-min.jpg") 1x,
+    url("/assets/furniture/10-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-bathroom {
   background-image: image-set(
-    url(../images/Mebli/11-1x-min.jpg) 1x,
-    url(../images/Mebli/11-2x-min.jpg) 2x
+    url("/assets/furniture/11-1x-min.jpg") 1x,
+    url("/assets/furniture/11-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-garden {
   background-image: image-set(
-    url(../images/Mebli/12-1x-min.jpg) 1x,
-    url(../images/Mebli/12-2x-min.jpg) 2x
+    url("/assets/furniture/12-1x-min.jpg") 1x,
+    url("/assets/furniture/12-2x-min.jpg") 2x
   );
 }
 
 .furniture-item-decor {
   background-image: image-set(
-    url(../images/Mebli/13-1x-min.jpg) 1x,
-    url(../images/Mebli/13-2x-min.jpg) 2x
+    url("/assets/furniture/13-1x-min.jpg") 1x,
+    url("/assets/furniture/13-2x-min.jpg") 2x
   );
 }
 
