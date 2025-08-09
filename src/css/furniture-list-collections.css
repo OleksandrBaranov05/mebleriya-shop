@@ -1,3 +1,322 @@
-.a3 {
-    background-color: rgb(104, 77, 77);
+.furniture-section {
+  max-width: 100%;
+}
+
+.container-mebli {
+  padding: 48px 20px;
+}
+
+.furniture-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #080c09;
+  padding-bottom: 16px;
+}
+
+.section-description {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #080c09;
+  padding-bottom: 40px;
+}
+
+.furniture-list {
+  display: grid;
+  grid-template-columns: repeat(2, calc((100% - 16px) / 2));
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.furniture-item {
+  width: 160px;
+  height: 122px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.furniture-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #fff;
+  width: 127px;
+}
+
+.furniture-item.active {
+  border: 8px solid #6b0609;
+  opacity: 0.8;
+}
+
+.furniture-item-all {
+  background-image: image-set(
+    url(../../images/Mebli/1-1x-min.jpg) 1x,
+    url(../../images/Mebli/1-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-sofa {
+  background-image: image-set(
+    url(../images/Mebli/2-1x-min.jpg) 1x,
+    url(../images/Mebli/2-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-storage {
+  background-image: image-set(
+    url(../images/Mebli/3-1x-min.jpg) 1x,
+    url(../images/Mebli/3-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-bed {
+  background-image: image-set(
+    url(../images/Mebli/4-1x-min.jpg) 1x,
+    url(../images/Mebli/4-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-table {
+  background-image: image-set(
+    url(../images/Mebli/5-1x-min.jpg) 1x,
+    url(../images/Mebli/5-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-chair {
+  background-image: image-set(
+    url(../../images/Mebli/6-1x-min.jpg) 1x,
+    url(../../images/Mebli/6-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-kitchen {
+  background-image: image-set(
+    url(../images/Mebli/7-1x-min.jpg) 1x,
+    url(../images/Mebli/7-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-kids {
+  background-image: image-set(
+    url(../images/Mebli/8-1x-min.jpg) 1x,
+    url(../images/Mebli/8-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-office {
+  background-image: image-set(
+    url(../images/Mebli/9-1x-min.jpg) 1x,
+    url(../images/Mebli/9-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-hallway {
+  background-image: image-set(
+    url(../images/Mebli/10-1x-min.jpg) 1x,
+    url(../images/Mebli/10-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-bathroom {
+  background-image: image-set(
+    url(../images/Mebli/11-1x-min.jpg) 1x,
+    url(../images/Mebli/11-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-garden {
+  background-image: image-set(
+    url(../images/Mebli/12-1x-min.jpg) 1x,
+    url(../images/Mebli/12-2x-min.jpg) 2x
+  );
+}
+
+.furniture-item-decor {
+  background-image: image-set(
+    url(../images/Mebli/13-1x-min.jpg) 1x,
+    url(../images/Mebli/13-2x-min.jpg) 2x
+  );
+}
+
+@media screen and (min-width: 768px) {
+  .container-mebli {
+    padding: 48px 32px;
+  }
+
+  .furniture-title {
+    font-size: 48px;
+  }
+
+  .section-description {
+    font-size: 18px;
+  }
+
+  .furniture-text {
+    font-size: 20px;
+  }
+
+  .furniture-list {
+    grid-template-columns: repeat(4, calc((100% - 72px) / 4));
+    gap: 24px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1158px) {
+  .container-mebli {
+    padding: 80px 64px;
+  }
+
+  .furniture-list {
+    grid-template-columns: repeat(7, calc((100% - 144px) / 7));
+  }
+}
+
+/* Gallery */
+
+.load-more {
+  display: block;
+  margin: 24px auto 0;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: none;
+  background: #6b0609;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.products-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.gallery-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #080c09;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+
+.gallery-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #080c09;
+  padding-bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .products-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media screen and (min-width: 1158px) {
+  .products-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  padding: 12px;
+  transition: box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* .product-card h3 {
+  margin: 0;
+  font: 600 16px/1.3 'Raleway', sans-serif;
+  color: #080c09;
+}
+
+.product-card p {
+  margin: 0;
+  font: 500 14px/1.4 'Raleway', sans-serif;
+  color: #30363c;
+} */
+
+.details-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 100px;
+  color: #080c09;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05),
+    inset 0 -2px 1px 0 rgba(8, 12, 9, 0.05),
+    inset 0 0 0 1px rgba(8, 12, 9, 0.05);
+  background: rgba(8, 12, 9, 0.05);
+  transition: opacity 0.2s ease;
+}
+.product-card .details-btn:hover {
+  opacity: 0.9;
+}
+
+.load-more {
+  display: block;
+  margin: 24px auto 0;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  background: #6b6609;
+  color: #fff;
+  font-weight: 700;
+}
+
+.load-more:hover {
+  opacity: 0.9;
+}
+.load-more:active {
+  transform: translateY(1px);
 }
