@@ -67,14 +67,14 @@
 
 .furniture-item-all {
   background-image: image-set(
-    url(../../images/Mebli/1-1x-min.jpg) 1x,
-    url(../../images/Mebli/1-2x-min.jpg) 2x
+    url(/assets/furniture/all-furniture-min.png) 1x,
+    url(images/Mebli/1-2x-min.jpg) 2x
   );
 }
 
 .furniture-item-sofa {
   background-image: image-set(
-    url(../images/Mebli/2-1x-min.jpg) 1x,
+    url(/src/public/assets/furniture/bathroom-furniture-min.png) 1x,
     url(../images/Mebli/2-2x-min.jpg) 2x
   );
 }
