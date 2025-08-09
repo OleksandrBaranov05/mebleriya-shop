@@ -54,6 +54,11 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 h2 {

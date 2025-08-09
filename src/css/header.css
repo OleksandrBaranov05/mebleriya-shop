@@ -1,18 +1,9 @@
 /* Header */
-.header {
-  background: var(--white);
-  /*position: fixed;*/
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
 
 .header-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 64px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,17 +13,14 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
+
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .logo:hover {
-  color: #555;
+  opacity: 0.5;
+
 }
 
 .logo-icon {
@@ -91,7 +79,6 @@
 }
 
 .cta-button {
-  background: #8b1538;
   color: #ffffff;
   padding: 14px 28px;
   border: none;
@@ -99,16 +86,27 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.2);
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background-color: var(--color-madang);
+  transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .cta-button:hover,
 .cta-button:focus {
-  background: #b46b7a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(139, 21, 56, 0.4);
+
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-madang);
+  opacity: 0.5;
+
 }
 
 /* Burger menu */
@@ -150,6 +148,9 @@
   justify-content: center;
   transition: right 0.3s ease;
   z-index: 999;
+
+  padding: 24px 98px 24px 25px;
+
 }
 
 .mobile-menu.active {
@@ -160,10 +161,11 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 30px;
-  text-align: center;
-  align-items: center;
+
+  gap: 32px;
+  align-items: right;
   width: 100%;
+  position: relative;
 }
 
 .mobile-nav-link {
@@ -173,10 +175,12 @@
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
-  position: relative;
+
   overflow: hidden;
   display: block;
   padding: 10px;
+  text-align: right;
+
 }
 
 .mobile-nav-link:hover,
@@ -204,8 +208,10 @@
 
 .close-menu {
   position: absolute;
-  top: 30px;
-  right: 30px;
+
+  top: 20px;
+  right: 98px;
+
   cursor: pointer;
   padding: 8px;
   background: none;
@@ -214,8 +220,6 @@
 }
 
 .close-icon {
-  width: 24px;
-  height: 24px;
   fill: #333;
   transition: fill 0.3s ease;
 }
@@ -225,27 +229,38 @@
 }
 
 .mobile-cta-button {
-  background: #8b1538;
+
   color: #ffffff;
-  padding: 16px 32px;
+  padding: 8px 43px;
   border: none;
   border-radius: 30px;
-  text-decoration: none;
+
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
   cursor: pointer;
   margin-top: 30px;
-  width: 220px;
+
   text-align: center;
-  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.2);
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background-color: var(--color-madang);
+  transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .mobile-cta-button:hover,
 .mobile-cta-button:focus {
-  background: #b46b7a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(139, 21, 56, 0.4);
+
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-madang);
+  opacity: 0.5;
 }
 
 /* Responsive design */
@@ -275,7 +290,9 @@
 }
 
 /* Mobile та Tablet - від 375px до 1439px */
-@media (max-width: 1439px) {
+
+@media only screen and (max-width: 1439px) {
+
   .nav-actions {
     display: none;
   }
@@ -285,8 +302,9 @@
   }
 }
 
-/* Desktop - від 1440px */
-@media (min-width: 1440px) {
+
+@media only screen and (min-width: 1440px) {
+
   .nav-actions {
     display: flex;
   }
