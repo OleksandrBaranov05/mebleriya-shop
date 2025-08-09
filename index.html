@@ -23,52 +23,51 @@
     <script type="module" crossorigin src="/mebleriya-shop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-Cb7VvBBu.js">
     <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-BfPs2Zf6.css">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-CcYNCaxf.css">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-BfSTkaNh.css">
   </head>
   <body>
-    
     <header class="header">
-      <div class="header-container">
-        <a href="/" class="logo" id="logo">
-          <svg class="logo-icon" width="157" height="35">
-            <use href="/mebleriya-shop/assets/icons.svg#icon-logo"></use>
-          </svg>
-        </a>
+  <div class="container header-container">
+    <a href="/index.html" class="logo" id="logo">
+      <svg class="logo-icon" width="159" height="35">
+        <use href="/mebleriya-shop/assets/icons.svg#icon-logo"></use>
+      </svg>
+    </a>
 
-        <div class="nav-actions">
-          <nav class="nav">
-            <a href="#home" class="nav-link">Наші меблі</a>
-            <a href="#about" class="nav-link">Про нас</a>
-            <a href="#furniture" class="nav-link">Часті питання</a>
-            <a href="#contact" class="nav-link">Відгуки</a>
-          </nav>
-          <a href="#furniture" class="cta-button">До покупок</a>
-        </div>
+    <div class="nav-actions">
+      <nav class="nav">
+        <a href="#furniture" class="nav-link">Наші меблі</a>
+        <a href="#about-us" class="nav-link">Про нас</a>
+        <a href="#faq" class="nav-link">Часті питання</a>
+        <a href="#feedback" class="nav-link">Відгуки</a>
+      </nav>
+      <a href="#furniture" class="cta-button">До покупок</a>
+    </div>
 
-        <button class="burger" id="burger">
-          <svg class="burger-icon">
-            
-            <use href="/mebleriya-shop/assets/icons.svg#icon-burger"></use>
-          </svg>
-        </button>
+    <button class="burger" id="burger">
+      <svg class="burger-icon" width="21" height="16">
+        <use href="assets/icons.svg#icon-burger"></use>
+      </svg>
+    </button>
 
-        <div class="mobile-menu" id="mobileMenu">
-          <button class="close-menu" id="closeMenu">
-            <svg class="close-icon">
-              <use href="/mebleriya-shop/assets/icons.svg#close"></use>
-            </svg>
-          </button>
-          <nav class="mobile-nav">
-            <a href="#home" class="mobile-nav-link">Наші меблі</a>
-            <a href="#about" class="mobile-nav-link">Про нас</a>
-            <a href="#furniture" class="mobile-nav-link">Часті питання</a>
-            <a href="#contact" class="mobile-nav-link">Відгуки</a>
-            <a href="#furniture" class="mobile-cta-button">До покупок</a>
-          </nav>
-        </div>
-      </div>
-    </header>
-    
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="close-menu" id="closeMenu">
+        <svg class="close-icon" width="32" height="32">
+          <use href="assets/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+      <nav class="mobile-nav">
+        <a href="#furniture" class="mobile-nav-link">Наші меблі</a>
+        <a href="#about-us" class="mobile-nav-link">Про нас</a>
+        <a href="#faq" class="mobile-nav-link">Часті питання</a>
+        <a href="#feedback" class="mobile-nav-link">Відгуки</a>
+        <a href="#furniture" class="mobile-cta-button">До покупок</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
 
     <main>
       <section class="hero">
@@ -83,7 +82,9 @@
   </div>
 </section>
 
-      <section class="furniture-section">
+      
+<section class="furniture-section" id="furniture">
+
   <div class="container container-mebli">
     <h2 class="furniture-title">Наші меблі</h2>
     <p class="section-description">
@@ -163,7 +164,7 @@
 </section>
 
       <div class="a32">3.1</div>
-      <section class="about-us">
+      <section class="about-us" id="about-us">
   <div class="container about-container">
     <div class="about-descr-wrap">
       <h2 class="about-title">Про Меблерію</h2>
@@ -198,14 +199,25 @@
   </div>
 </section>
 
-      <section class="faq-section">
+      <section class="faq-section" id="faq">
   <div class="container faq-container">
     <h2 class="faq-title">Часті питання</h2>
     <div class="accordion-container" id="faq-list"></div>
   </div>
 </section>
 
-      <div class="a6">6</div>
+      <section class="feedback" id="feedback">
+  <div class="container feedback-container">
+    <h2 class="feedback-title">Відгуки клієнтів</h2>
+    <p class="feedback-text">
+      Дізнайтеся, що кажуть наші задоволені клієнти про нашу меблі.
+    </p>
+    <div class="feedback-wrap">
+      <ul class="feedback-card-list"></ul>
+      <div class="feedback-swiper"></div>
+    </div>
+  </div>
+</section>
 
     </main>
 
