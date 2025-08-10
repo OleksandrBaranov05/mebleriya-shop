@@ -326,7 +326,7 @@
   opacity: 0.9;
 }
 
-.load-more {
+/* .load-more {
   display: block;
   margin: 24px auto 0;
   padding: 12px 20px;
@@ -335,7 +335,7 @@
   background: #6b6609;
   color: #fff;
   font-weight: 700;
-}
+} */
 
 .load-more:hover {
   opacity: 0.9;
