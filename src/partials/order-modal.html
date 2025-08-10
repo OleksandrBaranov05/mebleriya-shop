@@ -1,1 +1,71 @@
-<div class="a9">9</div>
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Замовити зворотній зв’язок</title>
+    <!-- Шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button class="open-modal-btn">Замовити зворотній зв’язок</button>
+
+    <div class="modal" id="modal">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <button class="modal__close" aria-label="Закрити">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18"
+              stroke="#1A1A1A"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M6 6L18 18"
+              stroke="#1A1A1A"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <h2 class="modal__title">Замовити зворотній зв’язок</h2>
+        <form class="modal__form">
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              placeholder="Введіть ваш email"
+              required
+            />
+          </label>
+          <label>
+            Телефон
+            <input
+              type="tel"
+              name="phone"
+              placeholder="+38 (0__) ___ __ __"
+              required
+            />
+          </label>
+          <button type="submit" class="modal__submit">Відправити</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

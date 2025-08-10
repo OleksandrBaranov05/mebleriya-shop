@@ -1,3 +1,139 @@
-.a9{
-    background-color: brown;
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.open-modal-btn {
+  padding: 14px 24px;
+  background: #d4a373;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.open-modal-btn:hover {
+  background: #c28b5c;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background: white;
+  max-width: 420px;
+  width: 90%;
+  margin: 50px auto;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.modal__close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.modal__close svg {
+  display: block;
+}
+
+.modal__title {
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.modal__form label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal__form input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.modal__submit {
+  width: 100%;
+  padding: 14px;
+  background: #d4a373;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal__submit:hover {
+  background: #c28b5c;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .modal__content {
+    margin: 20px auto;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal__title {
+    font-size: 18px;
+  }
+  .modal__form input {
+    font-size: 13px;
+  }
 }
