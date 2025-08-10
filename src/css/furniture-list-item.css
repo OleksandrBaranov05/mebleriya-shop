@@ -1,3 +1,7 @@
+.furniture-section {
+    margin-bottom: 48px;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -12,52 +16,36 @@
     overflow: hidden;
 }
 
-.more-btn {
-    border: none;
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 100px;
-    padding: 10px 24px;
-    max-width: 340px;
-    height: 46px;
-    box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px var(--opacity-neutral-darkest-15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 var(--opacity-white-5);
-    background: var(--color-madang);
-    color: #fff;
-    transition: box-shadow 0.3s ease, opacity 0.3s ease;
-}
-
-.more-btn:hover,
-.more-btn:focus {
-    box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px var(--opacity-neutral-darkest-15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 var(--opacity-white-5);
-    opacity: 0.5;
-}
-
 @media only screen and (min-width: 1440px) {
-    .more-btn {
-        width: 421px;
+    .furniture-section {
+        margin-bottom: 80px;
     }
 }
 
-.card-img {
-    border-radius: 8px;
-    max-width: 335px;
-    height: 277px;
-    object-fit: cover;
+.products-list {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; 
 }
 
-.name {
+.product-card {
+    max-width: 335px;
+    gap: 0px;
+}
+
+.gallery-title {
     font-weight: 600;
     font-size: 16px;
     color: var(--color-scheme-1-text);
 }
 
-.price {
+.gallery-text {
     font-weight: 600;
     font-size: 18px;
     color: var(--color-scheme-1-text);
 }
 
-.more-li-btn {
+.details-btn {
     font-weight: 500;
     font-size: 16px;
     border-radius: 100px;
@@ -70,43 +58,24 @@
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
-.more-li-btn:hover,
-.more-li-btn:focus {
+.details-btn:hover,
+.details-btn:focus {
     box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5), inset 0 -2px 1px 0 var(--opacity-neutral-darkest-5), inset 0 0 0 1px var(--opacity-neutral-darkest-5);
     opacity: 0.5;
 }
 
 @media only screen and (min-width: 768px) {
-    .card-ul {
+    .products-list {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .card-img {
-        width: 340px;
-        height: 281px;
-    }
-
-    .name {
+    .gallery-title {
         font-size: 18px;
     }
 
-    .price {
+    .gallery-text {
         font-size: 20px;
-    }
-
-    .more-li-btn {
-        width: 340px;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    .card-img {
-        width: 310px;
-        height: 256px;
-    }
-
-    .more-li-btn {
-        width: 310px;
     }
 }
