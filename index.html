@@ -23,7 +23,7 @@
     <script type="module" crossorigin src="/mebleriya-shop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-oX30Jbj5.js">
     <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-Uls1DtJG.css">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-DubsrCGm.css">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-FUBYrbHR.css">
   </head>
   <body>
     <header class="header">
@@ -88,9 +88,7 @@
   </div>
 </section>
 
-      
-<section class="furniture-section" id="furniture">
-
+      <section class="furniture-section" id="furniture">
   <div class="container container-mebli">
     <div class="furniture-catalog-wrap">
       <h2 class="furniture-title">Наші меблі</h2>
@@ -172,7 +170,6 @@
 </section>
 
       
-
       <section class="about-us" id="about-us">
   <div class="container about-container">
     <div class="about-descr-wrap">
@@ -257,11 +254,8 @@
 
     </main>
 
-    
-<section class="footer" id="footer">
+    <section class="footer" id="footer">
     <div class="container">
-
-        
         <div class="screen-footer">
         <div class="logo-footer">
             <a class="logo-footer-link" href="./index.html">
@@ -303,25 +297,31 @@
     </div>
 </section>
 
-    <div class="a8">8</div>
-    <!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Замовити зворотній зв’язок</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <button class="open-modal-btn">Замовити зворотній зв’язок</button>
+    <div class="furn-modal-backdrop" id="furnitureModal" hidden>
+  <div class="furn-modal" role="dialog" aria-modal="true" aria-labelledby="furn-modal-title">
+    <button class="furn-modal__close" type="button" aria-label="Закрити" data-close>&times;</button>
 
-    <div
+    <div class="furn-modal__body">
+      <div class="furn-modal__gallery">
+        <img class="furn-modal__main-img" src="" alt="" />
+        <ul class="furn-modal__thumbs" aria-label="Галерея зображень"></ul>
+      </div>
+      <div class="furn-modal__info">
+        <h3 class="furn-modal__title" id="furn-modal-title"></h3>
+            <p class="furn-modal__category"></p>
+            <div class="furn-modal__meta">
+                <span class="furn-modal__price"></span>
+                <div class="furn-modal__rating" aria-label="Оцінка"></div>
+            </div>
+        <form class="furn-modal__colors" aria-label="Доступні кольори"></form>
+            <p class="furn-modal__desc"></p>
+            <ul class="furn-modal__sizes" aria-label="Розміри"></ul>
+        <button class="furn-modal__order" type="button">Перейти до замовлення</button>
+      </div>
+    </div>
+  </div>
+</div>
+       <div
       class="modal"
       id="modal"
       aria-hidden="true"
@@ -390,9 +390,7 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
-</html>
+
 
 
   </body>
