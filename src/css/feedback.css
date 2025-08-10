@@ -1,0 +1,124 @@
+.feedbacks__container {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.feedbacks__title {
+  font-size: 36px;
+  margin-bottom: 24px;
+}
+
+.feedbacks__subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 80px;
+}
+
+.feedback-card {
+  margin-bottom: 48px;
+}
+
+.feedback-card__stars {
+  margin-bottom: 24px;
+}
+
+.feedback-card__text {
+  font-weight: 500;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 24px;
+}
+
+.feedback-card__name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-scheme-1-text);
+}
+
+.feedbacks__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedbacks__slider {
+  --swiper-theme-color: var(--color-scheme-1-text);
+}
+
+.swiper-pagination-bullets-dynamic {
+  transform: none;
+  left: 0;
+}
+
+.feedbacks__pagination {
+}
+
+.swiper-horizontal
+  > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic,
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+  transform: none !important;
+  left: 0 !important;
+}
+
+.fb-btn {
+  color: var(--color-scheme-1-text);
+  background: var(--color-scheme-1-foreground);
+  border: 1px solid var(--opacity-neutral-darkest-15);
+  border-radius: 100px;
+  padding: 15.5px 16px;
+  transition: color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  outline: none;
+}
+
+.fb-btn:hover,
+.fb-btn:focus {
+  background: var(--color-madang-light);
+  color: var(--color-scheme-1-background);
+}
+
+.fb-btn:active {
+  background: var(--color-madang);
+  color: var(--color-scheme-1-background);
+}
+
+.fb-btn:disabled {
+  background: var(--color-scheme-1-foreground);
+  opacity: 0.3;
+  color: var(--color-scheme-1-text);
+}
+
+.arrow-icon {
+  fill: currentColor;
+  display: block;
+}
+
+.right-arrow {
+  transform: rotate(180deg);
+}
+
+@media only screen and (min-width: 768px) {
+  .feedbacks__container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .feedbacks__title {
+    font-size: 48px;
+  }
+
+  .feedbacks__subtitle {
+    font-size: 18px;
+  }
+
+  .feedback-card__text {
+    padding-right: 48px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .feedbacks__container {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
