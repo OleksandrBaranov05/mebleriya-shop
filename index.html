@@ -21,9 +21,9 @@
     />
 
     <script type="module" crossorigin src="/mebleriya-shop/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-Cb7VvBBu.js">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-BfPs2Zf6.css">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-Bm2W-cDx.css">
+    <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-oX30Jbj5.js">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-Uls1DtJG.css">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-C_TFeNBJ.css">
   </head>
   <body>
     <header class="header">
@@ -218,15 +218,42 @@
   </div>
 </section>
 
-      <section class="feedback" id="feedback">
-  <div class="container feedback-container">
-    <h2 class="feedback-title">Відгуки клієнтів</h2>
-    <p class="feedback-text">
-      Дізнайтеся, що кажуть наші задоволені клієнти про нашу меблі.
+      <section class="feedbacks" id="feedback">
+  <div class="container feedbacks__container">
+    <h2 class="feedbacks__title">Відгуки клієнтів</h2>
+    <p class="feedbacks__subtitle">
+      Дізнайтеся, що кажуть наші задоволені клієнти про наші меблі.
     </p>
-    <div class="feedback-wrap">
-      <ul class="feedback-card-list"></ul>
-      <div class="feedback-swiper"></div>
+
+    <div class="feedbacks__slider">
+      <div class="swiper feedbacks-swiper">
+        <div class="swiper-wrapper" id="feedbacksWrapper"></div>
+      </div>
+
+      <div class="feedbacks__controls">
+        <div class="feedbacks__pagination" id="fbPagination"></div>
+        <div class="feedbacks__arrows">
+          <button
+            class="fb-btn fb-btn--prev"
+            id="fbPrev"
+            aria-label="Попередній відгук"
+          >
+            <svg class="arrow-icon left-arrow" width="14" height="15">
+              <use href="/mebleriya-shop/assets/icons.svg#icon-arrow"></use>
+            </svg>
+          </button>
+
+          <button
+            class="fb-btn fb-btn--next"
+            id="fbNext"
+            aria-label="Наступний відгук"
+          >
+            <svg class="arrow-icon right-arrow" width="14" height="15">
+              <use href="/mebleriya-shop/assets/icons.svg#icon-arrow"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
