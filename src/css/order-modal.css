@@ -1,13 +1,12 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: ‘Montserrat’, sans-serif;
   margin: 0;
   padding: 0;
   background: #fff;
 }
-
 .open-modal-btn {
   padding: 14px 24px;
-  background: #d4a373;
+  background: var(--color-madang);
   border: none;
   color: white;
   font-weight: 600;
@@ -16,30 +15,25 @@ body {
   border-radius: 8px;
   transition: background 0.3s ease;
 }
-
 .open-modal-btn:hover,
 .open-modal-btn:focus {
-  background: #c28b5c;
+  background: var(--color-madang);
   outline: none;
 }
-
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 999;
 }
-
 .modal.active {
   display: block;
 }
-
 .modal__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
 }
-
 .modal__content {
   position: relative;
   background: white;
@@ -52,7 +46,6 @@ body {
   animation: fadeInUp 0.3s ease-out;
   outline: none;
 }
-
 .modal__close {
   position: absolute;
   top: 18px;
@@ -68,59 +61,58 @@ body {
   border-radius: 50%;
   transition: background 0.3s ease;
 }
-
 .modal__close:hover,
 .modal__close:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;
 }
-
 .modal__title {
   margin: 0 0 20px;
   font-weight: 700;
   font-size: 20px;
 }
-
 .modal__form label {
   display: block;
   margin-bottom: 16px;
   font-size: 14px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
-
 .modal__form input,
 .modal__form textarea {
   width: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ‘Montserrat’, sans-serif;
   font-size: 16px;
   padding: 16px 20px;
   border-radius: 16px;
-  border: 1px solid #d4cfc6;
-  background-color: #faf9f6;
-  color: #1a1a1a;
+  border: 1px solid #D4CFC6;
+  background-color: #FAF9F6;
+  color: #1A1A1A;
   margin-top: 6px;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .modal__form input::placeholder,
 .modal__form textarea::placeholder {
-  color: #a39b8f;
+  color: #A39B8F;
 }
-
 .modal__form input:focus,
 .modal__form textarea:focus {
   outline: none;
-  border-color: #c28b5c;
+  border-color: var(--color-madang);
   box-shadow: 0 0 8px rgba(194, 139, 92, 0.4);
   background-color: #fff;
 }
 
+.modal__form textarea {
+  max-width: 100%;
+  resize: none; 
+  overflow: auto;
+}
 .modal__submit {
   width: 100%;
   padding: 14px;
-  background: #d4a373;
+  background: var(--color-madang);
   color: white;
   border: none;
   border-radius: 8px;
@@ -129,13 +121,11 @@ body {
   font-size: 16px;
   transition: background 0.3s ease;
 }
-
 .modal__submit:hover,
 .modal__submit:focus {
-  background: #c28b5c;
+  background: var(--color-madang);
   outline: none;
 }
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -146,14 +136,12 @@ body {
     transform: translateY(0);
   }
 }
-
 @media (max-width: 768px) {
   .modal__content {
     margin: 20px auto;
     padding: 24px;
   }
 }
-
 @media (max-width: 480px) {
   .modal__title {
     font-size: 18px;
