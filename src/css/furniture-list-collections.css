@@ -343,3 +343,6 @@
 .load-more:active {
   transform: translateY(1px);
 }
+[hidden] {
+  display: none !important;
+}
