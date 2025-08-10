@@ -1,28 +1,20 @@
-// furniture-list-item.js — версія з правильним API (/furnitures),
-// кешем для модалки і коректним підрахунком "Показати ще".
-
 const BASE = 'https://furniture-store.b.goit.study/api';
-
-// DOM
 const catsList = document.getElementById('categoryList');
 const grid = document.getElementById('productsList');
 const more = document.getElementById('loadMoreBtn');
 
-// state
 let activeCat = 'all';
 let page = 1;
 let limit = 8;
 let total = 0;
 let loadingMore = false;
 
-// helpers
 async function getJSON(url) {
   const r = await fetch(url);
   if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
   return r.json();
 }
 
-// API (правильні ендпоінти)
 const api = {
   categories: () => getJSON(`${BASE}/categories`),
   furnitures: (p = {}) => {
@@ -35,25 +27,21 @@ const api = {
   },
 };
 
-// ============ Категорії (будуємо data-cat з API) ============
 async function initCategories() {
   const cats = await api.categories();
   const map = new Map(cats.map(c => [c.name.trim(), c._id]));
-  // Назви беремо з твоєї розмітки .furniture-text і кладемо id в data-cat
   catsList.querySelectorAll('.furniture-item').forEach(li => {
     const name = li.querySelector('.furniture-text')?.textContent.trim();
     li.dataset.cat = name === 'Всі товари' ? 'all' : map.get(name) || '';
   });
 }
 
-// ============ Рендер ============
-
 function clearProducts() {
   grid.innerHTML = '';
 }
 
 function appendProducts(arr) {
-  // кеш усіх завантажених товарів для модалки
+
   window.__productsCache = window.__productsCache || new Map();
   arr.forEach(p => window.__productsCache.set(p._id, p));
 
@@ -74,14 +62,12 @@ function appendProducts(arr) {
 }
 
 function updateMore(receivedCount) {
-  // було grid.querySelector('.product-card').length — це помилка
   const shown = grid.querySelectorAll('.product-card').length;
   const finished = receivedCount < limit || shown >= total;
   more.hidden = finished;
   more.disabled = finished;
 }
 
-// ============ Завантаження ============
 
 async function loadFirstPage() {
   page = 1;
@@ -107,8 +93,6 @@ async function loadMore() {
   }
 }
 
-// ============ Події ============
-
 catsList.addEventListener('click', async e => {
   const li = e.target.closest('.furniture-item');
   if (!li) return;
@@ -127,7 +111,6 @@ catsList.addEventListener('click', async e => {
 
 more?.addEventListener('click', loadMore);
 
-// ============ Старт ============
 (async function init() {
   await initCategories();
   await loadFirstPage();

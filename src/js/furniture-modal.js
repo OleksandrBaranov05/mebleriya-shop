@@ -1,6 +1,3 @@
-// Furniture Details Modal
-// Works with the existing gallery grid (#productsList) and "Детальніше" buttons.
-// Minimal integration is required: add data-id for each card/button and cache the product (see patch below).
 
 (function () {
   const modal = document.getElementById('furnitureModal');
@@ -15,23 +12,58 @@
   const sizesEl = modal.querySelector('.furn-modal__sizes');
   const orderBtn = modal.querySelector('.furn-modal__order');
 
-  // helpers
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const productsList = $('#productsList'); // existing container from your markup
+  let currentProduct = null;
 
-  // open/close
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const productsList = $('#productsList');
+
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+  function getCategoryText(category) {
+    if (!category) return '';
+    if (typeof category === 'string') return category;
+    if (typeof category === 'object') {
+      return (
+        category.name ??
+        category.title ??
+        category.label ??
+        Object.values(category).find(v => typeof v === 'string') ??
+        ''
+      );
+    }
+    return '';
+  }
+
+  function getRating(p) {
+    const r = p.rating;
+    if (typeof r === 'number') return r;
+    if (r && typeof r === 'object') return r.value ?? r.rate ?? r.score ?? r.stars ?? 0;
+    if (typeof p.stars === 'number') return p.stars;
+    if (typeof p.score === 'number') return p.score;
+    if (typeof p.popularity === 'number') return Math.min(5, p.popularity);
+    return 4.8;
+  }
+
+  function getColors(p) {
+    const list = Array.isArray(p.colors || p.colours) ? (p.colors || p.colours) : [];
+    const toCss = x => typeof x === 'string' ? x : (x && (x.hex ?? x.color ?? x.value ?? x.name)) || null;
+    const out = list.map(toCss).filter(Boolean);
+    return out.length ? out : ['#111', '#c0c0c0', '#f5f5f5'];
+  }
+
   function open() {
     modal.hidden = false;
     document.body.classList.add('no-scroll');
-    // focus close for accessibility
     modal.querySelector('[data-close]').focus({ preventScroll: true });
     window.addEventListener('keydown', onEsc);
   }
+
   function close() {
     modal.hidden = true;
     document.body.classList.remove('no-scroll');
     window.removeEventListener('keydown', onEsc);
   }
+
   function onEsc(e) {
     if (e.key === 'Escape') close();
   }
@@ -40,50 +72,53 @@
     if (e.target === modal || e.target.closest('[data-close]')) close();
   });
 
+  function getSelectedColor() {
+    const checked = colorsForm.querySelector('input[name="color"]:checked');
+    return checked ? checked.value : null;
+  }
+
   orderBtn.addEventListener('click', () => {
-    // Close details modal
+    const detail = {
+      productId: currentProduct?._id,
+      title: titleEl.textContent,
+      color: getSelectedColor(),
+    };
     close();
-    // Open order modal if your app listens to this event
-    document.dispatchEvent(new CustomEvent('open-order-modal', { detail: { from: 'furniture-details' } }));
-    // Or trigger existing modal if you have one with a function:
-    const maybe = window.openOrderModal;
-    if (typeof maybe === 'function') maybe();
+    document.dispatchEvent(new CustomEvent('open-order-modal', { detail }));
+    if (typeof window.openOrderModal === 'function') window.openOrderModal(detail);
   });
 
-  // main renderer
   function render(product) {
-    const {
-      title = product.name || 'Модель',
-      category = product.category?.name || product.category || '',
-      price,
-      rating = product.rating ?? product.stars ?? 0,
-      images = product.images || (product.image ? [product.image] : []),
-      description = product.description || '',
-      colors = product.colors || product.colours || [],
-      size = product.size || product.sizes || product.dimensions || {}
-    } = product;
+    currentProduct = product;
 
-    // Title, category, price
+    const title = product.title || product.name || 'Модель';
+    const categoryText = getCategoryText(product.category);
+    const price = product.price;
+    const rating = clamp(Number(getRating(product)) || 0, 0, 5);
+    const images = product.images?.length ? product.images : (product.image ? [product.image] : []);
+    const description = product.description || '';
+    const colors = getColors(product);
+    const size = product.size || product.sizes || product.dimensions || {};
+
     titleEl.textContent = title;
-    catEl.textContent = category ? `Категорія: ${category}` : '';
+    catEl.textContent = categoryText;
     priceEl.textContent = (price != null) ? `${price} грн` : '';
+    rateEl.style.setProperty('--value', rating);
 
-    // Rating 0..5 (supports float)
-    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-    rateEl.style.setProperty('--value', clamp(Number(rating) || 0, 0, 5));
-
-    // Images
     const imgs = images.length ? images : [''];
     mainImg.src = imgs[0] || '';
     mainImg.alt = title;
 
-    thumbs.innerHTML = imgs.slice(0, 3).map((src, i) =>
-      `<li><button type="button" aria-label="Зображення ${i+1}">
-         <img src="${src}" alt="${title}" ${i===0?'aria-current="true"':''}>
-       </button></li>`).join('');
+    const thumbImgs = imgs.slice(1, 3); 
+    thumbs.innerHTML = thumbImgs.map((src, i) =>
+      `<li>
+         <button type="button" aria-label="Зображення ${i + 2}">
+           <img src="${src}" alt="${title}">
+         </button>
+       </li>`
+    ).join('');
 
-    thumbs.addEventListener('click', onThumbClick);
-    function onThumbClick(e) {
+    thumbs.onclick = (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
       const img = btn.querySelector('img');
@@ -91,13 +126,10 @@
       mainImg.src = img.src;
       thumbs.querySelectorAll('img').forEach(x => x.removeAttribute('aria-current'));
       img.setAttribute('aria-current', 'true');
-    }
+    };
 
-    // Colors (single-select UX built with checkboxes)
     colorsForm.innerHTML = '';
-    const list = (Array.isArray(colors) ? colors : []).filter(Boolean);
-    list.forEach((clr, idx) => {
-      const id = `color-${product._id || title}-${idx}`;
+    colors.forEach((clr, idx) => {
       const wrap = document.createElement('label');
       wrap.className = 'furn-color';
       wrap.style.background = clr;
@@ -112,40 +144,41 @@
       wrap.appendChild(input);
       colorsForm.appendChild(wrap);
     });
-    // ensure only one checked at a time (checkbox UI, radio behavior)
-    colorsForm.addEventListener('change', (e) => {
+    colorsForm.onchange = (e) => {
       if (e.target.name !== 'color') return;
       [...colorsForm.querySelectorAll('input[name="color"]')].forEach(cb => {
         if (cb !== e.target) cb.checked = false;
       });
-    }, { once: true });
+    };
 
-    // Description
     descEl.textContent = description;
 
-    // Sizes
     sizesEl.innerHTML = '';
     const s = (typeof size === 'object' && size) ? size : {};
-    const rows = [];
-    if (s.width) rows.push(`Ширина: ${s.width}`);
-    if (s.height) rows.push(`Висота: ${s.height}`);
-    if (s.depth || s.length) rows.push(`Глибина: ${s.depth ?? s.length}`);
-    if (!rows.length && typeof size === 'string') rows.push(size);
-    sizesEl.innerHTML = rows.map(v => `<li>${v}</li>`).join('');
+    const W = s.width || s.w || s.W;
+    const H = s.height || s.h || s.H;
+    const D = s.depth || s.length || s.d || s.L;
+    if (W && H && D) {
+      sizesEl.innerHTML = `<li>Розміри: ${W} x ${H} x ${D}</li>`;
+    } else {
+      const rows = [];
+      if (W) rows.push(`Ширина: ${W}`);
+      if (H) rows.push(`Висота: ${H}`);
+      if (D) rows.push(`Глибина: ${D}`);
+      const asString = typeof size === 'string' ? [size] : [];
+      sizesEl.innerHTML = [...rows, ...asString].map(v => `<li>${v}</li>`).join('');
+    }
   }
 
-  // open from card button
   productsList?.addEventListener('click', (e) => {
     const btn = e.target.closest('.details-btn');
     if (!btn) return;
 
-    // Product is pulled from global cache written by the list renderer (see patch below)
     const id = btn.dataset.id || btn.closest('.product-card')?.dataset.id;
     const cache = (window.__productsCache instanceof Map) ? window.__productsCache : null;
     const product = cache?.get(id);
 
     if (!product) {
-      // Fallback: try to read from DOM (title/price) — not ideal, but keeps the modal usable.
       const card = btn.closest('.product-card');
       const title = card?.querySelector('.gallery-title')?.textContent?.trim();
       const img = card?.querySelector('img')?.src;

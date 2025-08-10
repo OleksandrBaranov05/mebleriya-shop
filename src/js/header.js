@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.getElementById('loader');
   const notification = document.getElementById('notification');
 
-  // Mobile menu toggle
   const toggleMobileMenu = (open = true) => {
     burger.classList.toggle('active', open);
     mobileMenu.classList.toggle('active', open);
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => toggleMobileMenu(false));
     });
 
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -50,13 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Loader
   const showLoader = () => loader && (loader.style.display = 'flex');
   const hideLoader = () => loader && (loader.style.display = 'none');
 
-  hideLoader(); // Hide on page load
+  hideLoader(); 
 
-  // Notification
   const showNotification = (message, type = 'error') => {
     if (!notification) return;
     notification.textContent = message;
@@ -83,16 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 🟢 Cursor pointer for interactive elements
   document.querySelectorAll('a, button').forEach(el => {
     el.style.cursor = 'pointer';
   });
 
-  // 🟢 Retina optimization
   if (window.devicePixelRatio > 1) {
     console.log('Retina display detected - loading high-res images');
   }
 
-  // Optional: expose loadFurniture globally if needed
   window.loadFurniture = loadFurniture;
 });
