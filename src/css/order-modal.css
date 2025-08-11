@@ -4,48 +4,54 @@ body {
   padding: 0;
   background: #fff;
 }
+
 .open-modal-btn {
   padding: 14px 24px;
   background: var(--color-madang);
   border: none;
-  color: white;
+  color: #fff;
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, opacity 0.2s ease, transform 0.05s ease;
 }
-.open-modal-btn:hover,
-.open-modal-btn:focus {
-  background: var(--color-madang);
-  outline: none;
+.open-modal-btn:hover {
+  opacity: 0.92;
 }
+.open-modal-btn:focus { outline: none; }
+.open-modal-btn:focus-visible {
+  outline: 2px solid var(--color-madang);
+  outline-offset: 3px;
+}
+
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 999;
 }
-.modal.active {
-  display: block;
-}
+.modal.active { display: block; }
+
 .modal__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .modal__content {
   position: relative;
-  background: white;
+  background: #fff;
   max-width: 420px;
   width: 90%;
   margin: 50px auto;
   padding: 32px;
   border-radius: 16px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   animation: fadeInUp 0.3s ease-out;
   outline: none;
 }
+
 .modal__close {
   position: absolute;
   top: 18px;
@@ -61,23 +67,27 @@ body {
   border-radius: 50%;
   transition: background 0.3s ease;
 }
-.modal__close:hover,
-.modal__close:focus {
-  background: rgba(0, 0, 0, 0.05);
-  outline: none;
+.modal__close:hover { background: rgba(0, 0, 0, 0.05); }
+.modal__close:focus { outline: none; }
+.modal__close:focus-visible {
+  outline: 2px solid var(--color-madang);
+  outline-offset: 3px;
 }
+
 .modal__title {
   margin: 0 0 20px;
   font-weight: 700;
   font-size: 20px;
 }
+
 .modal__form label {
   display: block;
   margin-bottom: 16px;
   font-size: 14px;
   font-weight: 500;
-  color: #1A1A1A;
+  color: #1a1a1a;
 }
+
 .modal__form input,
 .modal__form textarea {
   width: 100%;
@@ -85,69 +95,79 @@ body {
   font-size: 16px;
   padding: 16px 20px;
   border-radius: 16px;
-  border: 1px solid #D4CFC6;
-  background-color: #FAF9F6;
-  color: #1A1A1A;
+  border: 1px solid #d4cfc6;
+  background-color: #faf9f6;
+  color: #1a1a1a;
   margin-top: 6px;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 .modal__form input::placeholder,
 .modal__form textarea::placeholder {
-  color: #A39B8F;
+  color: #a39b8f;
 }
 .modal__form input:focus,
 .modal__form textarea:focus {
   outline: none;
   border-color: var(--color-madang);
-  box-shadow: 0 0 8px rgba(194, 139, 92, 0.4);
+  box-shadow: 0 0 8px rgba(107, 6, 9, 0.25);
   background-color: #fff;
 }
 
 .modal__form textarea {
   max-width: 100%;
-  resize: none; 
+  resize: none;
   overflow: auto;
 }
+
 .modal__submit {
   width: 100%;
   padding: 14px;
   background: var(--color-madang);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   font-size: 16px;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease, opacity 0.2s ease, transform 0.05s ease, box-shadow 0.25s ease;
 }
-.modal__submit:hover,
-.modal__submit:focus {
-  background: var(--color-madang);
-  outline: none;
+
+.modal__submit:hover {
+  opacity: 0.92;
 }
+
+.modal__submit:focus { outline: none; }
+.modal__submit:focus-visible {
+  outline: 2px solid var(--color-madang);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(107, 6, 9, 0.18);
+}
+
+.modal__submit:active {
+  transform: translateY(1px);
+}
+
+.modal__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 @media (max-width: 768px) {
   .modal__content {
     margin: 20px auto;
     padding: 24px;
   }
 }
+
 @media (max-width: 480px) {
-  .modal__title {
-    font-size: 18px;
-  }
+  .modal__title { font-size: 18px; }
   .modal__form input,
-  .modal__form textarea {
-    font-size: 14px;
-  }
+  .modal__form textarea { font-size: 14px; }
 }

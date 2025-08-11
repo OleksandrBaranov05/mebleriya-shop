@@ -70,7 +70,7 @@ body.no-scroll {
 
 .furn-modal__thumbs {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* завжди 2 прев’ю */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 12px;
   margin-top: 12px;
 }
@@ -261,5 +261,26 @@ body.no-scroll {
 
   .furn-modal__rating {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 899px) {
+  
+  .furn-modal {
+    overflow: hidden;          
+    max-height: 90vh;          
+  }
+
+  .furn-modal__body {
+    padding-top: 56px; 
+    max-height: calc(90vh - 56px);
+    overflow: auto;
+  }
+
+  .furn-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
   }
 }
