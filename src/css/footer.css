@@ -32,6 +32,13 @@ color: #FFFFFF;
 .social-icon:focus{
     fill: #080C09;
 }
+.social-icon.instagram {
+    fill: #000000;
+}
+.social-icon.instagram:hover,
+.social-icon.instagram:focus {
+    fill: #000000; 
+}
 .copyright{
     font-size: 12px;
     margin-left: auto;
