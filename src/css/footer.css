@@ -18,11 +18,11 @@ color: #FFFFFF;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 11px;
+    gap: 32px;
 }
 .social-list{
     display: flex;
-    gap: 32px;
+    gap: 24px;
     justify-content: center;
 }
 .social-icon{
