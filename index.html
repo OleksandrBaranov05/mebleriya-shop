@@ -6,29 +6,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Меблерія</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
-      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
 
     <script type="module" crossorigin src="/mebleriya-shop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-Dmwv0MB_.js">
     <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-lHm0X9zG.css">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-qKTELUbK.css">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-CRPbgWzi.css">
   </head>
   <body>
     <header class="header">
   <div class="container header-container">
-    <a href="./index.html" class="logo" id="logo">
+    <a href="./index.html" class="logo">
       <svg class="logo-icon" width="159" height="35">
         <use href="/mebleriya-shop/assets/icons.svg#icon-logo"></use>
       </svg>
@@ -36,10 +23,12 @@
 
     <div class="nav-actions">
       <nav class="nav">
-        <a href="#furniture" class="nav-link">Наші меблі</a>
-        <a href="#about-us" class="nav-link">Про нас</a>
-        <a href="#faq" class="nav-link">Часті питання</a>
-        <a href="#feedback" class="nav-link">Відгуки</a>
+        <ul class="nav-ul">
+          <li><a href="#furniture" class="nav-link">Наші меблі</a></li>
+          <li><a href="#about-us" class="nav-link">Про нас</a></li>
+          <li><a href="#faq" class="nav-link">Часті питання</a></li>
+          <li><a href="#feedback" class="nav-link">Відгуки</a></li>
+        </ul>
       </nav>
       <a href="#furniture" class="cta-button">До покупок</a>
     </div>
@@ -52,7 +41,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-menu-head">
-        <a href="/index.html" class="logo mob-logo" id="logo">
+        <a href="./index.html" class="logo mob-logo">
           <svg class="logo-icon" width="159" height="35">
             <use href="/mebleriya-shop/assets/icons.svg#icon-logo"></use>
           </svg>
@@ -64,11 +53,13 @@
         </button>
       </div>
       <nav class="mobile-nav">
-        <a href="#furniture" class="mobile-nav-link">Наші меблі</a>
-        <a href="#about-us" class="mobile-nav-link">Про нас</a>
-        <a href="#faq" class="mobile-nav-link">Часті питання</a>
-        <a href="#feedback" class="mobile-nav-link">Відгуки</a>
-        <a href="#furniture" class="mobile-cta-button">До покупок</a>
+        <ul class="mobile-nav-">
+          <li><a href="#furniture" class="mobile-nav-link">Наші меблі</a></li>
+          <li><a href="#about-us" class="mobile-nav-link">Про нас</a></li>
+          <li><a href="#faq" class="mobile-nav-link">Часті питання</a></li>
+          <li><a href="#feedback" class="mobile-nav-link">Відгуки</a></li>
+          <li><a href="#furniture" class="mobile-cta-button">До покупок</a></li>
+        </ul>
       </nav>
     </div>
   </div>
@@ -163,13 +154,14 @@
         </li>
       </ul>
     </div>
-  
+
     <ul class="products-list" id="productsList"></ul>
+
     <button id="loadMoreBtn" class="load-more" hidden>Показати ще</button>
   </div>
 </section>
 
-      
+
       <section class="about-us" id="about-us">
   <div class="container about-container">
     <div class="about-descr-wrap">
@@ -298,25 +290,43 @@
 </section>
 
     <div class="furn-modal-backdrop" id="furnitureModal" hidden>
-  <div class="furn-modal" role="dialog" aria-modal="true" aria-labelledby="furn-modal-title">
-    <button class="furn-modal__close" type="button" aria-label="Закрити" data-close>&times;</button>
+  <div
+    class="furn-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="furn-modal-title"
+  >
+    <button
+      class="furn-modal__close"
+      type="button"
+      aria-label="Закрити"
+      data-close
+    >
+      &times;
+    </button>
 
     <div class="furn-modal__body">
       <div class="furn-modal__gallery">
-        <img class="furn-modal__main-img" src="" alt="" />
+        <img
+          class="furn-modal__main-img"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+          alt=""
+        />
         <ul class="furn-modal__thumbs" aria-label="Галерея зображень"></ul>
       </div>
       <div class="furn-modal__info">
         <h3 class="furn-modal__title" id="furn-modal-title"></h3>
-            <p class="furn-modal__category"></p>
-            <div class="furn-modal__meta">
-                <span class="furn-modal__price"></span>
-                <div class="furn-modal__rating" aria-label="Оцінка"></div>
-            </div>
+        <p class="furn-modal__category"></p>
+        <div class="furn-modal__meta">
+          <span class="furn-modal__price"></span>
+          <div class="furn-modal__rating" aria-label="Оцінка"></div>
+        </div>
         <form class="furn-modal__colors" aria-label="Доступні кольори"></form>
-            <p class="furn-modal__desc"></p>
-            <ul class="furn-modal__sizes" aria-label="Розміри"></ul>
-        <button class="furn-modal__order" type="button">Перейти до замовлення</button>
+        <p class="furn-modal__desc"></p>
+        <ul class="furn-modal__sizes" aria-label="Розміри"></ul>
+        <button class="furn-modal__order" type="button">
+          Перейти до замовлення
+        </button>
       </div>
     </div>
   </div>
