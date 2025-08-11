@@ -71,11 +71,13 @@ function appendProducts(arr) {
     `;
 
     return `<li class="product-card" data-id="${p._id}">
-      ${img ? `<img src="${img}" alt="${title}">` : ''}
+      ${img ? `<img class="product-card-img" src="${img}" alt="${title}">` : ''}
       <h3 class="gallery-title">${title}</h3>
       ${colorsHTML}
-      ${price ? `<p class="gallery-text">${price}</p>` : ''}
-      <button class="details-btn" data-id="${p._id}" type="button">Детальніше</button>
+      ${price ? `<p class="gallery-price">${price}</p>` : ''}
+      <button class="details-btn" data-id="${
+        p._id
+      }" type="button">Детальніше</button>
     </li>`;
   }).join('');
 
