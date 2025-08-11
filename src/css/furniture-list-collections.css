@@ -47,6 +47,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  cursor: pointer; 
 }
 
 .furniture-text {
@@ -61,7 +63,7 @@
 }
 
 .furniture-item.active {
-  border: 8px solid #6b0609;
+  box-shadow: inset 0 0 0 8px #6b0609;
   opacity: 0.8;
 }
 
@@ -171,6 +173,8 @@
     inset 0 32px 24px 0 var(--opacity-white-5);
   background: var(--color-madang);
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
+
+  cursor: pointer; 
 }
 
 .products-list {
@@ -226,18 +230,6 @@
   margin-bottom: 40px;
 }
 
-/* .product-card h3 {
-  margin: 0;
-  font: 600 16px/1.3 'Raleway', sans-serif;
-  color: #080c09;
-}
-
-.product-card p {
-  margin: 0;
-  font: 500 14px/1.4 'Raleway', sans-serif;
-  color: #30363c;
-} */
-
 .details-btn {
   padding: 10px 14px;
   border: none;
@@ -251,21 +243,13 @@
     inset 0 0 0 1px rgba(8, 12, 9, 0.05);
   background: rgba(8, 12, 9, 0.05);
   transition: opacity 0.2s ease;
+
+  cursor: pointer;
 }
+
 .product-card .details-btn:hover {
   opacity: 0.9;
 }
-
-/* .load-more {
-  display: block;
-  margin: 24px auto 0;
-  padding: 12px 20px;
-  border-radius: 12px;
-  border: none;
-  background: #6b6609;
-  color: #fff;
-  font-weight: 700;
-} */
 
 .load-more:hover {
   box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
@@ -276,6 +260,7 @@
   background: var(--color-madang);
   opacity: 0.5;
 }
+
 .load-more:active {
   transform: translateY(1px);
 }

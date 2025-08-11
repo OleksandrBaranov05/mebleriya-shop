@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const notification = document.getElementById('notification');
 
   const toggleMobileMenu = (open = true) => {
-    burger.classList.toggle('active', open);
-    mobileMenu.classList.toggle('active', open);
+    burger?.classList.toggle('active', open);
+    mobileMenu?.classList.toggle('active', open);
     body.classList.toggle('menu-open', open);
   };
 
@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const showLoader = () => loader && (loader.style.display = 'flex');
   const hideLoader = () => loader && (loader.style.display = 'none');
-
-  hideLoader(); 
+  hideLoader();
 
   const showNotification = (message, type = 'error') => {
     if (!notification) return;
@@ -65,10 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       if (Math.random() > 0.2) {
-        showNotification(
-          `Каталог "${category}" успішно завантажено!`,
-          'success'
-        );
+        showNotification(`Каталог "${category}" успішно завантажено!`, 'success');
       } else {
         throw new Error();
       }
@@ -86,6 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.devicePixelRatio > 1) {
     console.log('Retina display detected - loading high-res images');
   }
+
+  function defocusOnPointer(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+      el.addEventListener('mouseup', () => el.blur());
+      el.addEventListener('mouseleave', () => el.blur());
+      el.addEventListener('touchend', () => el.blur(), { passive: true });
+    });
+  }
+  defocusOnPointer('.nav-link, .mobile-nav-link, .burger, .close-menu, .cta-button, .mobile-cta-button');
 
   window.loadFurniture = loadFurniture;
 });
