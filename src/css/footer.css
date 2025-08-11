@@ -34,16 +34,20 @@
 .social-icon {
   display: block;
   fill: var(--color-white);
-  transition: fill 0.3s ease;
+  --color1: var(--color-white);
+}
+
+.social-list li:nth-child(2) .social-icon {
+  fill: var(--color-neutral-darkest);
+  --color1: var(--color-neutral-darkest);
 }
 
 .social-icon-link:hover .social-icon,
 .social-icon-link:focus .social-icon,
 .social-icon-link:focus-visible .social-icon {
-  --color1: var(--color-neutral-darkest); 
-  fill: var(--color-neutral-darkest);
+  fill: inherit;
+  --color1: inherit;
 }
-
 
 .social-icon-link:focus-visible {
   outline: 2px solid var(--color-white);
@@ -69,19 +73,8 @@
     gap: 80px;
   }
 
-  .logo-footer {
-    order: 1;
-  }
-
-  .copyright {
-    order: 2;
-  }
-
-  .nav-footer {
-    order: 3;
-  }
-
-  .social-list {
-    order: 4;
-  }
+  .logo-footer { order: 1; }
+  .copyright  { order: 2; }
+  .nav-footer  { order: 3; }
+  .social-list { order: 4; }
 }

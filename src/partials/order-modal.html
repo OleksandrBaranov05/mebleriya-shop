@@ -1,70 +1,48 @@
-   <div
-      class="modal"
-      id="modal"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div class="modal__overlay"></div>
-      <div class="modal__content" role="document" tabindex="0">
-        <button class="modal__close" aria-label="Закрити">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 6L6 18"
-              stroke="#1A1A1A"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M6 6L18 18"
-              stroke="#1A1A1A"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-        <h2 class="modal__title">Замовити зворотній зв’язок</h2>
-        <form class="modal__form" novalidate>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              placeholder="Введіть ваш email"
-              required
-              autocomplete="email"
-            />
-          </label>
-          <label>
-            Телефон
-            <input
-              type="tel"
-              name="phone"
-              placeholder="+38 (0__) ___ __ __"
-              required
-              autocomplete="tel"
-              pattern="^\+38\s?\(0\d{2}\)\s?\d{3}\s?\d{2}\s?\d{2}$"
-              title="Формат: +38 (0XX) XXX XX XX"
-            />
-          </label>
-          <label>
-            Коментар
-            <textarea
-              name="comment"
-              placeholder="Ваш коментар"
-              rows="5"
-              maxlength="500"
-            ></textarea>
-          </label>
-          <button type="submit" class="modal__submit">Надіслати заявку</button>
-        </form>
-      </div>
-    </div>
 
+<div
+  class="modal"
+  id="modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="modal__overlay"></div>
+  <div class="modal__content" role="document" tabindex="0">
+    <button class="modal__close" aria-label="Закрити">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M6 6L18 18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
 
+    <h2 class="modal__title">Замовити зворотній зв’язок</h2>
+
+    <form class="modal__form" novalidate>
+      <label>
+        Email
+        <input type="email" name="email" placeholder="Введіть ваш email" required autocomplete="email"/>
+      </label>
+
+      <label>
+        Телефон
+        <input
+          type="tel"
+          name="phone"
+          placeholder="+38 (0__) ___ __ __"
+          required
+          autocomplete="tel"
+          pattern="^\+?\d[\d\s\(\)-]{9,}$"
+          title="Введіть номер телефону"
+        />
+      </label>
+
+      <label>
+        Коментар
+        <textarea name="comment" placeholder="Ваш коментар" rows="5" maxlength="500"></textarea>
+      </label>
+
+      <button type="submit" class="modal__submit">Надіслати заявку</button>
+    </form>
+  </div>
+</div>

@@ -27,6 +27,15 @@ const api = {
   },
 };
 
+function getColors(p) {
+  const raw = Array.isArray(p?.colors || p?.colours) ? (p.colors || p.colours) : [];
+  const toCss = x =>
+    typeof x === 'string' ? x : (x && (x.hex ?? x.color ?? x.value ?? x.name)) || null;
+  const list = raw.map(toCss).filter(Boolean);
+  const safe = list.length ? list : ['#111111', '#c0c0c0', '#f5f5f5'];
+  return safe.slice(0, 3);
+}
+
 async function initCategories() {
   const cats = await api.categories();
   const map = new Map(cats.map(c => [c.name.trim(), c._id]));
@@ -41,25 +50,38 @@ function clearProducts() {
 }
 
 function appendProducts(arr) {
-
   window.__productsCache = window.__productsCache || new Map();
   arr.forEach(p => window.__productsCache.set(p._id, p));
 
-  const html = arr
-    .map(p => {
-      const title = p.title || p.name || 'Без назви';
-      const img = p.image || p.img || (p.images && p.images[0]) || '';
-      const price = p.price != null ? `${p.price} грн` : '';
-      return `<li class="product-card" data-id="${p._id}">
-        ${img ? `<img src="${img}" alt="${title}">` : ''}
-        <h3 class="gallery-title">${title}</h3>
-        ${price ? `<p class="gallery-text">${price}</p>` : ''}
-        <button class="details-btn" data-id="${p._id}" type="button">Детальніше</button>
-      </li>`;
-    })
-    .join('');
+  const html = arr.map(p => {
+    const title = p.title || p.name || 'Без назви';
+    const img = p.image || p.img || (p.images && p.images[0]) || '';
+    const price = p.price != null ? `${p.price} грн` : '';
+    const colors = getColors(p).slice(0, 3);
+
+    const colorsHTML = `
+      <ul class="card-colors">
+        ${colors
+          .map(
+            c =>
+              `<li class="card-color" title="${typeof c === 'string' ? c : 'Колір'}" style="background:${c}"></li>`
+          )
+          .join('')}
+      </ul>
+    `;
+
+    return `<li class="product-card" data-id="${p._id}">
+      ${img ? `<img src="${img}" alt="${title}">` : ''}
+      <h3 class="gallery-title">${title}</h3>
+      ${colorsHTML}
+      ${price ? `<p class="gallery-text">${price}</p>` : ''}
+      <button class="details-btn" data-id="${p._id}" type="button">Детальніше</button>
+    </li>`;
+  }).join('');
+
   grid.insertAdjacentHTML('beforeend', html);
 }
+
 
 function updateMore(receivedCount) {
   const shown = grid.querySelectorAll('.product-card').length;
@@ -67,7 +89,6 @@ function updateMore(receivedCount) {
   more.hidden = finished;
   more.disabled = finished;
 }
-
 
 async function loadFirstPage() {
   page = 1;

@@ -1,3 +1,7 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+const BASE = 'https://furniture-store.b.goit.study/api';
+
 const modal = document.getElementById('modal');
 const openBtn = document.querySelector('.open-modal-btn');
 const closeBtn = modal?.querySelector('.modal__close');
@@ -5,15 +9,108 @@ const overlay = modal?.querySelector('.modal__overlay');
 const modalContent = modal?.querySelector('.modal__content');
 const form = modal?.querySelector('form');
 
+let handlersAttached = false;
+let orderContext = { modelId: null, color: null, title: '' };
+
+const onCloseClick = () => closeModal();
+const onOverlayClick = e => { if (e.target === overlay) closeModal(); };
+const onEsc = e => { if (e.key === 'Escape' && modal?.classList.contains('active')) closeModal(); };
+
+const onFormSubmit = async e => {
+  clearErrors();
+
+  let ok = true;
+  const nameEl  = form.querySelector('[name="name"]'); 
+  const emailEl = form.querySelector('[name="email"]');
+  const phoneEl = form.querySelector('[name="phone"]');
+  const commEl  = form.querySelector('[name="comment"]');
+
+  if (nameEl && !minLen(nameEl.value, 2)) { ok = false; showError(nameEl, 'Вкажіть ім’я (мінімум 2 символи).'); }
+  if (!validateEmail(emailEl.value))      { ok = false; showError(emailEl, 'Некоректний email.'); }
+  if (!validatePhone(phoneEl.value))      { ok = false; showError(phoneEl, 'Некоректний телефон.'); }
+
+  if (!ok) {
+    e.preventDefault();
+    setStatus('Будь ласка, виправте помилки у формі.', 'error');
+    (form.querySelector('[aria-invalid="true"]') || emailEl || phoneEl)?.focus();
+    return;
+  }
+
+  e.preventDefault();
+
+  const payload = {
+    email: emailEl.value.trim(),
+    phone: normalizePhone(phoneEl.value),
+    modelId: orderContext.modelId || undefined,
+    color: orderContext.color || undefined,
+    comment: (commEl?.value || '').trim(),
+  };
+
+  const submitBtn = form.querySelector('.modal__submit');
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch(`${BASE}/orders`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      let msg = 'Помилка відправки. Спробуйте ще раз.';
+      try {
+        const data = await res.json();
+        if (data?.message) msg = data.message;
+      } catch {}
+      notify('error', msg);
+      submitBtn.disabled = false;
+      return;
+    }
+
+    notify('success', 'Заявку надіслано! Ми зв’яжемося з вами найближчим часом.');
+    form.reset();
+    setStatus('');
+    closeModal();
+
+  } catch (err) {
+    notify('error', 'Мережева помилка. Перевірте з’єднання і спробуйте пізніше.');
+    submitBtn.disabled = false;
+  }
+};
+
+function attachModalListeners() {
+  if (handlersAttached || !modal) return;
+  closeBtn?.addEventListener('click', onCloseClick);
+  overlay?.addEventListener('click', onOverlayClick);
+  document.addEventListener('keydown', onEsc);
+  form?.addEventListener('submit', onFormSubmit);
+  handlersAttached = true;
+}
+
+function detachModalListeners() {
+  if (!handlersAttached || !modal) return;
+  closeBtn?.removeEventListener('click', onCloseClick);
+  overlay?.removeEventListener('click', onOverlayClick);
+  document.removeEventListener('keydown', onEsc);
+  form?.removeEventListener('submit', onFormSubmit);
+  handlersAttached = false;
+}
+
 function openModal(detail) {
   if (!modal) return;
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('no-scroll');
+
   if (detail) {
-    modal.querySelector('[name="product"]')?.setAttribute('value', detail.title || '');
-    modal.querySelector('[name="color"]')?.setAttribute('value', detail.color || '');
+    orderContext = {
+      modelId: detail.productId || detail.modelId || null,
+      color: detail.color || null,
+      title: detail.title || '',
+    };
   }
+
+  attachModalListeners();
   modalContent?.focus({ preventScroll: true });
 }
 
@@ -22,19 +119,13 @@ function closeModal() {
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('no-scroll');
+
+  detachModalListeners();
   openBtn?.focus({ preventScroll: true });
 }
 
 openBtn?.addEventListener('click', () => openModal());
 document.addEventListener('open-order-modal', e => openModal(e.detail));
-closeBtn?.addEventListener('click', closeModal);
-overlay?.addEventListener('click', closeModal);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && modal?.classList.contains('active')) closeModal();
-});
-
-window.openOrderModal = d => openModal(d);
-window.closeOrderModal = closeModal;
 
 function clearErrors() {
   form?.querySelectorAll('.input-error').forEach(n => n.remove());
@@ -62,9 +153,7 @@ function setStatus(text, type = 'info') {
   }
   box.textContent = text || '';
   const color = type === 'error' ? '#b00020' : type === 'success' ? '#0e7a0d' : '#6c6f73';
-  box.style.cssText = text
-    ? 'margin-top:12px;font:600 13px/1.3 Raleway, sans-serif;'
-    : 'display:none;';
+  box.style.cssText = text ? 'margin-top:12px;font:600 13px/1.3 Raleway, sans-serif;' : 'display:none;';
   if (text) {
     box.style.display = 'block';
     box.style.color = color;
@@ -81,24 +170,27 @@ function validatePhone(v) {
 function minLen(v, n) {
   return v.trim().length >= n;
 }
+function normalizePhone(v) {
 
-form?.addEventListener('submit', async e => {
-  clearErrors();
-  let ok = true;
+  const d = v.replace(/\D/g, '');
+  if (d.startsWith('380')) return d;
+  if (d.startsWith('0')) return `38${d}`;
+  return d;
+}
 
-  const nameEl = form.querySelector('[name="name"]');
-  const emailEl = form.querySelector('[name="email"]');
-  const phoneEl = form.querySelector('[name="phone"]');
-
-  if (nameEl && !minLen(nameEl.value, 2)) { ok = false; showError(nameEl, 'Вкажіть ім’я (мінімум 2 символи).'); }
-  if (emailEl && !validateEmail(emailEl.value)) { ok = false; showError(emailEl, 'Некоректний email.'); }
-  if (phoneEl && !validatePhone(phoneEl.value)) { ok = false; showError(phoneEl, 'Некоректний телефон.'); }
-
-  if (!ok) {
-    e.preventDefault();
-    setStatus('Будь ласка, виправте помилки у формі.', 'error');
-    (form.querySelector('[aria-invalid="true"]') || nameEl || emailEl || phoneEl)?.focus();
+function notify(type, message) {
+  const izi = window.iziToast;
+  if (!izi) {
+    console[type === 'error' ? 'error' : 'log'](message);
     return;
   }
-  e.preventDefault();
-});
+  if (type === 'error') {
+    izi.error({ title: 'Помилка', message, position: 'topRight' });
+  } else {
+    izi.success({ title: 'Готово', message, position: 'topRight' });
+  }
+}
+
+window.openOrderModal = d => openModal(d);
+window.closeOrderModal = closeModal;
+window.iziToast = iziToast;

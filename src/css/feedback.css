@@ -54,6 +54,12 @@
   left: 0;
 }
 
+.feedback-card {
+  cursor: pointer;
+}
+.feedback-card * {
+  cursor: inherit;
+}
 .swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic,
 .swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
   transform: none !important;
