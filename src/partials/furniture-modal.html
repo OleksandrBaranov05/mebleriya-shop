@@ -1,1 +1,42 @@
-<div class="a8">8</div>
+<div class="furn-modal-backdrop" id="furnitureModal" hidden>
+  <div
+    class="furn-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="furn-modal-title"
+  >
+    <button
+      class="furn-modal__close"
+      type="button"
+      aria-label="Закрити"
+      data-close
+    >
+      &times;
+    </button>
+
+    <div class="furn-modal__body">
+      <div class="furn-modal__gallery">
+        <img
+          class="furn-modal__main-img"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+          alt=""
+        />
+        <ul class="furn-modal__thumbs" aria-label="Галерея зображень"></ul>
+      </div>
+      <div class="furn-modal__info">
+        <h3 class="furn-modal__title" id="furn-modal-title"></h3>
+        <p class="furn-modal__category"></p>
+        <div class="furn-modal__meta">
+          <span class="furn-modal__price"></span>
+          <div class="furn-modal__rating" aria-label="Оцінка"></div>
+        </div>
+        <form class="furn-modal__colors" aria-label="Доступні кольори"></form>
+        <p class="furn-modal__desc"></p>
+        <ul class="furn-modal__sizes" aria-label="Розміри"></ul>
+        <button class="furn-modal__order" type="button">
+          Перейти до замовлення
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

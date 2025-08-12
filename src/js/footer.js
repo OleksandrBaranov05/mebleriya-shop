@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Footer script initialized');
 
-  // Плавная прокрутка по клику на якорные ссылки в футере
   document.querySelectorAll('.nav-footer a').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
 
   const copyright = document.querySelector('.copyright');
   if (copyright) {

@@ -3,17 +3,14 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  padding-top: 157px;
+  padding-bottom: 157px;
 }
 
 @media (min-resolution: 2x) and (max-width: 768px) {
   .hero {
     background-image: url('/assets/hero/bg-mob@2x-min.png');
   }
-}
-
-.hero-container {
-  padding-top: 157px;
-  padding-bottom: 157px;
 }
 
 .hero-title {
@@ -62,17 +59,14 @@
 @media only screen and (min-width: 768px) {
   .hero {
     background-image: url('/assets/hero/bg-tab-min.png');
+    padding-top: 36px;
+    padding-bottom: 36px;
   }
 
   @media (min-resolution: 2x) and (min-width: 768px) {
     .hero {
       background-image: url('/assets/hero/bg-tab@2x-min.png');
     }
-  }
-
-  .hero-container {
-    padding-top: 36px;
-    padding-bottom: 36px;
   }
 
   .hero-title {
@@ -96,17 +90,14 @@
 @media only screen and (min-width: 1440px) {
   .hero {
     background-image: url('/assets/hero/bg-desk-min.png');
+    padding-top: 92px;
+    padding-bottom: 92px;
   }
 
   @media (min-resolution: 2x) and (min-width: 1440px) {
     .hero {
       background-image: url('/assets/hero/bg-desk@2x-min.png');
     }
-  }
-
-  .hero-container {
-    padding-top: 92px;
-    padding-bottom: 92px;
   }
 
   .hero-btn {

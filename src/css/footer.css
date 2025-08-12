@@ -1,73 +1,82 @@
-.footer{
- background-color: #6B0609;
- font-weight: 400;
-color: #FFFFFF;
+.footer {
+  background-color: var(--color-madang);
+  font-weight: 400;
+  color: var(--color-white);
 }
-.screen-footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
+
+.screen-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }
+
 .logo-footer-icon {
-    fill: #FFFFFF;
+  fill: var(--color-white);
+  transition: fill 0.3s ease, opacity 0.3s ease;
 }
-.nav-footer{
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 32px;
+
+.nav-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  font-size: 16px;
 }
-.social-list{
-    display: flex;
-    gap: 24px;
-    justify-content: center;
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 }
-.social-icon{
-    fill: #FFFFFF;
+
+.social-icon {
+  display: block;
+  fill: var(--color-white);
+  --color1: var(--color-white);
 }
-.social-icon:hover,
-.social-icon:focus{
-    fill: #080C09;
+
+.social-list li:nth-child(2) .social-icon {
+  fill: var(--color-neutral-darkest);
+  --color1: var(--color-neutral-darkest);
 }
-.social-icon.instagram {
-    fill: #000000;
+
+.social-icon-link:hover .social-icon,
+.social-icon-link:focus .social-icon,
+.social-icon-link:focus-visible .social-icon {
+  fill: inherit;
+  --color1: inherit;
 }
-.social-icon.instagram:hover,
-.social-icon.instagram:focus {
-    fill: #000000; 
+
+.social-icon-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
-.copyright{
-    font-size: 12px;
-    margin-left: auto;
-    margin-right: auto;
+
+
+.copyright {
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 @media only screen and (min-width: 768px) {
-    .nav-footer {
-        flex-direction: row;
-        justify-content: center;
-    }
+  .nav-footer {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-   .screen-footer {
-        display: flex;
-        flex-direction: row;
-        gap: 80px;
-    }
-    .logo-footer{
-            order: 1;
-    }
-    .copyright{
-        order:2;
-    }
-    .nav-footer{
-        order: 3;
-    }
-    .social-list{
-        order:4;
-    }
+  .screen-footer {
+    flex-direction: row;
+    gap: 80px;
+  }
+
+  .logo-footer { order: 1; }
+  .copyright  { order: 2; }
+  .nav-footer  { order: 3; }
+  .social-list { order: 4; }
 }

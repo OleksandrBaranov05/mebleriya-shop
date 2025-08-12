@@ -9,33 +9,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.getElementById('loader');
   const notification = document.getElementById('notification');
 
-  // Mobile menu toggle
-  const toggleMobileMenu = (open = true) => {
-    burger.classList.toggle('active', open);
-    mobileMenu.classList.toggle('active', open);
-    body.classList.toggle('menu-open', open);
+  let linkNodes = [];
+
+  const showLoader = () => loader && (loader.style.display = 'flex');
+  const hideLoader = () => loader && (loader.style.display = 'none');
+  hideLoader();
+
+  const showNotification = (message, type = 'error') => {
+    if (!notification) return;
+    notification.textContent = message;
+    notification.className = `notification ${type} show`;
+    setTimeout(() => notification.classList.remove('show'), 4000);
   };
 
-  burger?.addEventListener('click', () => toggleMobileMenu(true));
-  closeMenuBtn?.addEventListener('click', () => toggleMobileMenu(false));
-
-  mobileMenu?.addEventListener('click', e => {
-    if (e.target === mobileMenu) toggleMobileMenu(false);
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
-      toggleMobileMenu(false);
+  const loadFurniture = async category => {
+    showLoader();
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (Math.random() > 0.2) {
+        showNotification(`Каталог "${category}" успішно завантажено!`, 'success');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      showNotification('Виникла помилка при завантаженні. Спробуйте пізніше.');
+    } finally {
+      hideLoader();
     }
+  };
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.style.cursor = 'pointer';
   });
 
-  document
-    .querySelectorAll('.mobile-nav-link, .mobile-cta-button')
-    .forEach(link => {
-      link.addEventListener('click', () => toggleMobileMenu(false));
-    });
+  if (window.devicePixelRatio > 1) {
+    console.log('Retina display detected - loading high-res images');
+  }
 
-  // Smooth scroll
+  function defocusOnPointer(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+      el.addEventListener('mouseup', () => el.blur());
+      el.addEventListener('mouseleave', () => el.blur());
+      el.addEventListener('touchend', () => el.blur(), { passive: true });
+    });
+  }
+  defocusOnPointer('.nav-link, .mobile-nav-link, .burger, .close-menu, .cta-button, .mobile-cta-button');
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -50,49 +69,45 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Loader
-  const showLoader = () => loader && (loader.style.display = 'flex');
-  const hideLoader = () => loader && (loader.style.display = 'none');
-
-  hideLoader(); // Hide on page load
-
-  // Notification
-  const showNotification = (message, type = 'error') => {
-    if (!notification) return;
-    notification.textContent = message;
-    notification.className = `notification ${type} show`;
-    setTimeout(() => notification.classList.remove('show'), 4000);
+  const onMenuOverlayClick = e => {
+    if (e.target === mobileMenu) toggleMobileMenu(false);
   };
-
-  const loadFurniture = async category => {
-    showLoader();
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      if (Math.random() > 0.2) {
-        showNotification(
-          `Каталог "${category}" успішно завантажено!`,
-          'success'
-        );
-      } else {
-        throw new Error();
-      }
-    } catch {
-      showNotification('Виникла помилка при завантаженні. Спробуйте пізніше.');
-    } finally {
-      hideLoader();
-    }
+  const onMenuEsc = e => {
+    if (e.key === 'Escape') toggleMobileMenu(false);
   };
+  const onMenuLinkClick = () => toggleMobileMenu(false);
 
-  // 🟢 Cursor pointer for interactive elements
-  document.querySelectorAll('a, button').forEach(el => {
-    el.style.cursor = 'pointer';
-  });
+  function attachMenuListeners() {
+    if (!mobileMenu) return;
+    mobileMenu.addEventListener('click', onMenuOverlayClick);
+    document.addEventListener('keydown', onMenuEsc);
 
-  // 🟢 Retina optimization
-  if (window.devicePixelRatio > 1) {
-    console.log('Retina display detected - loading high-res images');
+    linkNodes = Array.from(document.querySelectorAll('.mobile-nav-link, .mobile-cta-button'));
+    linkNodes.forEach(n => n.addEventListener('click', onMenuLinkClick));
   }
 
-  // Optional: expose loadFurniture globally if needed
+  function detachMenuListeners() {
+    if (!mobileMenu) return;
+    mobileMenu.removeEventListener('click', onMenuOverlayClick);
+    document.removeEventListener('keydown', onMenuEsc);
+
+    if (linkNodes.length) {
+      linkNodes.forEach(n => n.removeEventListener('click', onMenuLinkClick));
+      linkNodes = [];
+    }
+  }
+
+  function toggleMobileMenu(open = true) {
+    burger?.classList.toggle('active', open);
+    mobileMenu?.classList.toggle('active', open);
+    body.classList.toggle('menu-open', open);
+
+    if (open) attachMenuListeners();
+    else detachMenuListeners();
+  }
+
+  burger?.addEventListener('click', () => toggleMobileMenu(true));
+  closeMenuBtn?.addEventListener('click', () => toggleMobileMenu(false));
+
   window.loadFurniture = loadFurniture;
 });

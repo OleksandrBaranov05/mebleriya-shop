@@ -1,4 +1,4 @@
-.faq-container {
+.faq-section {
   padding-top: 48px;
   padding-bottom: 48px;
 }
@@ -86,9 +86,12 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .faq-container {
-    max-width: 865px;
+  .faq-section {
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  .faq-container {
+    max-width: 865px;
   }
 }
