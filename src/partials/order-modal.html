@@ -1,4 +1,3 @@
-
 <div
   class="modal"
   id="modal"
@@ -21,7 +20,13 @@
     <form class="modal__form" novalidate>
       <label>
         Email
-        <input type="email" name="email" placeholder="Введіть ваш email" required autocomplete="email"/>
+        <input
+          type="email"
+          name="email"
+          placeholder="Введіть ваш email"
+          required
+          autocomplete="email"
+        />
       </label>
 
       <label>
@@ -32,16 +37,22 @@
           placeholder="+38 (0__) ___ __ __"
           required
           autocomplete="tel"
-          pattern="^\+?\d[\d\s\(\)-]{9,}$"
+          inputmode="tel"
           title="Введіть номер телефону"
         />
       </label>
 
       <label>
         Коментар
-        <textarea name="comment" placeholder="Ваш коментар" rows="5" maxlength="500"></textarea>
+        <textarea
+          name="comment"
+          placeholder="Ваш коментар"
+          rows="5"
+          maxlength="500"
+        ></textarea>
       </label>
 
+      <div aria-live="polite" class="form-status" style="display:none;"></div>
       <button type="submit" class="modal__submit">Надіслати заявку</button>
     </form>
   </div>

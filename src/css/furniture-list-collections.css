@@ -1,6 +1,6 @@
 .furniture-section {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .furniture-title {
@@ -14,8 +14,6 @@
   color: var(--color-scheme-1-text);
   margin-bottom: 40px;
 }
-
-/* #region CATEGORIES*/
 
 .furniture-catalog-wrap {
   margin-bottom: 40px;
@@ -194,7 +192,6 @@
 }
 
 .details-btn {
-  min-width: 335px;
   max-width: 100%;
   padding: 10px 14px;
   border: none;
@@ -341,18 +338,8 @@
     box-shadow: .2em -.2em 0 0 currentcolor;
   }
 }
-
-
 @media screen and (min-width: 768px) {
-  .container-mebli {
-    padding: 48px 32px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .furniture-section {
-    padding-top: 32px;
-    padding-bottom: 32px;
-  }
+  
 
   .furniture-title {
     font-size: 48px;
@@ -397,10 +384,7 @@
 
 
 @media screen and (min-width: 1440px) {
-  .container-mebli {
-    padding: 80px 64px;
-  }
-
+ 
   .furniture-list {
     grid-template-columns: repeat(7, 1fr);
   }

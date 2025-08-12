@@ -2,18 +2,20 @@
   background-color: var(--color-madang);
   font-weight: 400;
   color: var(--color-white);
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .screen-footer {
-  padding-top: 25px;
-  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 24px;
 }
-
+.logo-footer-link {
+  display: flex;
+}
 .logo-footer-icon {
   fill: var(--color-white);
   transition: fill 0.3s ease, opacity 0.3s ease;
