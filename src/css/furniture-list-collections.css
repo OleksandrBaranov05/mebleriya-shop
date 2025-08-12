@@ -57,9 +57,6 @@
   opacity: 0.8;
 }
 
-/* #endregion CATEGORIES*/
-
-/* #region IMG */
 .furniture-item-all {
   background-image: image-set(
     url('/assets/furniture/1-1x-min.jpg') 1x,
@@ -150,10 +147,6 @@
     url('/assets/furniture/13-2x-min.jpg') 2x
   );
 }
-
-/* #endregion IMG */
-
-/* #region GALLERY */
 
 .products-list {
   margin-bottom: 32px;
@@ -271,8 +264,6 @@
   color: #fff;
 }
 
-
-
 .loader:before,
 .loader:after {
   content: '';
@@ -356,7 +347,7 @@
   .container-mebli {
     padding: 48px 32px;
   }
-
+}
 @media screen and (min-width: 768px) {
   .furniture-section {
     padding-top: 32px;
