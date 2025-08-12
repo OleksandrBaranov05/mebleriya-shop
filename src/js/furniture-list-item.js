@@ -2,12 +2,20 @@ const BASE = 'https://furniture-store.b.goit.study/api';
 const catsList = document.getElementById('categoryList');
 const grid = document.getElementById('productsList');
 const more = document.getElementById('loadMoreBtn');
+const loader = document.querySelector('.loader');
 
 let activeCat = 'all';
 let page = 1;
 let limit = 8;
 let total = 0;
 let loadingMore = false;
+
+function showLoader() { 
+  loader.classList.remove('is-hidden'); 
+}
+function hideLoader() { 
+  loader.classList.add('is-hidden'); 
+}
 
 async function getJSON(url) {
   const r = await fetch(url);
@@ -91,24 +99,31 @@ function updateMore(receivedCount) {
 }
 
 async function loadFirstPage() {
+  showLoader();
   page = 1;
-  const data = await api.furnitures({ page, limit, category: activeCat });
-  total = data.totalItems ?? data.total ?? data.furnitures.length;
-  clearProducts();
-  appendProducts(data.furnitures);
-  updateMore(data.furnitures.length);
+  try {
+    const data = await api.furnitures({ page, limit, category: activeCat });
+    total = data.totalItems ?? data.total ?? data.furnitures.length;
+    clearProducts();
+    appendProducts(data.furnitures);
+    updateMore(data.furnitures.length);
+  } finally {
+    hideLoader();
+  }
 }
 
 async function loadMore() {
   if (loadingMore) return;
   loadingMore = true;
   more.disabled = true;
+  showLoader();
   page += 1;
   try {
     const data = await api.furnitures({ page, limit, category: activeCat });
     appendProducts(data.furnitures);
     updateMore(data.furnitures.length);
   } finally {
+    hideLoader();
     loadingMore = false;
     if (!more.hidden) more.disabled = false;
   }
