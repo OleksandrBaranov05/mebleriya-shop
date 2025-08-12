@@ -10,7 +10,7 @@
     <script type="module" crossorigin src="/mebleriya-shop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/mebleriya-shop/assets/vendor-Dmwv0MB_.js">
     <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/vendor-lHm0X9zG.css">
-    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-DaLVGx6p.css">
+    <link rel="stylesheet" crossorigin href="/mebleriya-shop/assets/index-Bayo-D1z.css">
   </head>
   <body>
     <header class="header">
@@ -247,16 +247,13 @@
 
     </main>
 
-    <section class="footer" id="footer">
+    <footer class="footer" id="footer">
     <div class="container">
         <div class="screen-footer">
-        <div class="logo-footer">
             <a class="logo-footer-link" href="./index.html">
-
-            <svg class="logo-footer-icon" width="220.34" height="48.77">
-
+                <svg class="logo-footer-icon" width="220.34" height="48.77">
                 <use class="logo-footer-icon-style" href="/mebleriya-shop/assets/icons.svg#icon-logo"></use></svg></a>
-    </div>
+                
         <ul class="nav-footer">
             <li><a href="#furniture">Наші меблі</a></li>
             <li><a href="#about-us">Про нас</a></li>
@@ -290,7 +287,7 @@
         </div>
 
     </div>
-</section>
+</footer>
 
     <div class="furn-modal-backdrop" id="furnitureModal" hidden>
   <div
@@ -335,8 +332,7 @@
   </div>
 </div>
 
-    
-<div
+    <div
   class="modal"
   id="modal"
   aria-hidden="true"
@@ -358,7 +354,13 @@
     <form class="modal__form" novalidate>
       <label>
         Email
-        <input type="email" name="email" placeholder="Введіть ваш email" required autocomplete="email"/>
+        <input
+          type="email"
+          name="email"
+          placeholder="Введіть ваш email"
+          required
+          autocomplete="email"
+        />
       </label>
 
       <label>
@@ -369,16 +371,22 @@
           placeholder="+38 (0__) ___ __ __"
           required
           autocomplete="tel"
-          pattern="^\+?\d[\d\s\(\)-]{9,}$"
+          inputmode="tel"
           title="Введіть номер телефону"
         />
       </label>
 
       <label>
         Коментар
-        <textarea name="comment" placeholder="Ваш коментар" rows="5" maxlength="500"></textarea>
+        <textarea
+          name="comment"
+          placeholder="Ваш коментар"
+          rows="5"
+          maxlength="500"
+        ></textarea>
       </label>
 
+      <div aria-live="polite" class="form-status" style="display:none;"></div>
       <button type="submit" class="modal__submit">Надіслати заявку</button>
     </form>
   </div>
