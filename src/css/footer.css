@@ -54,10 +54,12 @@
   outline-offset: 2px;
 }
 
+
 .copyright {
   font-size: 12px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 @media only screen and (min-width: 768px) {
