@@ -1,14 +1,11 @@
 .about-us {
   background-color: var(--color-madang-lightest);
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .about-img {
   border-radius: 8px;
-}
-
-.about-container {
-  padding-top: 64px;
-  padding-bottom: 64px;
 }
 
 .about-descr-wrap {
@@ -27,7 +24,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .about-container {
+  .about-us {
     padding-top: 32px;
     padding-bottom: 32px;
   }
@@ -42,9 +39,12 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .about-container {
+  .about-us {
     padding-top: 64px;
     padding-bottom: 64px;
+  }
+
+  .about-container {
     display: flex;
     gap: 24px;
     align-items: center;
